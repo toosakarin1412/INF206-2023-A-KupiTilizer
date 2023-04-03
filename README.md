@@ -29,6 +29,6 @@ Jalankan perintah berikut untuk menjalankan server vite
 npm run dev
 ```
 
-Buka pada browser http://localhost:8000
+Buka pada browser http://localhost:8000 untuk membuka website.
 
 
