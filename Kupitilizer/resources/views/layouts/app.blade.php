@@ -41,7 +41,12 @@
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                                    <form method="POST" action="{{url('logout')}}">
+                                        @csrf
+                                        <div class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            <button type="submit" class="">Sign out</button>
+                                        </div>
+                                    </form>
                                 </li>
                             </ul>
                     </div>
