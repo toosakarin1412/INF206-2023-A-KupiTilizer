@@ -18,6 +18,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/requestjemput', function () {
+    return view('requestPenjemputan');
+});
+
+Route::get('/statuspermintaan', function () {
+    return view('statusPermintaanUser');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
