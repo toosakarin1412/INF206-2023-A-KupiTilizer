@@ -24,7 +24,7 @@
                     @if(Auth::check())
                     <button type="button" class="flex mr-3 text-sm hover:text-leaf text-white rounded-full md:mr-0 hover:ring-2 hover:ring-leaf " id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span class="sr-only">Open user menu</span>
-                        <span class="sm:block text-sm font-bold m-2 mx-4 hidden">{{Auth::user()->name}}</span>"
+                        <span class="sm:block text-sm font-bold m-2 mx-4 hidden">{{Auth::user()->name}}</span>
                         <img class="w-8 h-8 rounded-full" src="{{url('images/user.png')}}" alt="user photo">
                     </button>
                     <!-- Dropdown menu -->
@@ -34,11 +34,17 @@
                             <span class="block text-sm  text-gray-500 truncate">{{Auth::user()->email}}</span>
                         </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
+                                @if(Auth::user()->role == "user")
                                 <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+                                    <a href="{{url('/profile')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
                                 </li>
+                                @else
                                 <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                                    <a href="/<?php echo Auth::user()->role?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+                                </li>
+                                @endif
+                                <li>
+                                    <a href="{{url('/setting')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
                                 </li>
                                 <li>
                                     <form method="POST" action="{{url('logout')}}">
@@ -63,13 +69,13 @@
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
                     <ul class="flex flex-col font-medium md:p-0 mt-4 md:my-2 md:flex-row">
                         <li>
-                            <a href="#" class="block px-20 py-1 sm:py-2 hover:bg-leaf hover:text-dark text-white font-bold rounded-xl">Request Penjemputan</a>
+                            <a href="{{url('/requestjemput')}}" class="block px-20 py-1 sm:py-2 hover:bg-leaf hover:text-dark text-white font-bold rounded-xl">Request Penjemputan</a>
                         </li>
                         <li>
-                            <a href="#" class="block px-20 py-1 sm:py-2 hover:bg-leaf hover:text-dark text-white font-bold rounded-xl">Beli produk</a>
+                            <a href="{{url('/market')}}" class="block px-20 py-1 sm:py-2 hover:bg-leaf hover:text-dark text-white font-bold rounded-xl">Beli produk</a>
                         </li>
                         <li>
-                            <a href="#" class="block px-20 py-1 sm:py-2 hover:bg-leaf hover:text-dark text-white font-bold rounded-xl">Kupon</a>
+                            <a href="{{url('/coupon')}}" class="block px-20 py-1 sm:py-2 hover:bg-leaf hover:text-dark text-white font-bold rounded-xl">Kupon</a>
                         </li>
                     </ul>
                 </div>
@@ -133,13 +139,13 @@
                     <hr class="text-leaf mb-6">
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                     <li class="mb-4">
-                            <a href="#" class="hover:underline">Request Penjemputan</a>
+                            <a href="{{url('/requestjemput')}}" class="hover:underline">Request Penjemputan</a>
                         </li>
                         <li class="mb-4">
-                            <a href="#" class="hover:underline">Beli Produk</a>
+                            <a href="{{url('/market')}}" class="hover:underline">Beli Produk</a>
                         </li>
                         <li class="mb-4">
-                            <a href="#" class="hover:underline">Kupon</a>
+                            <a href="{{url('/coupon')}}" class="hover:underline">Kupon</a>
                         </li>
                     </ul>
                 </div>
