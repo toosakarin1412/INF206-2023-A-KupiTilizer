@@ -25,7 +25,7 @@
         <div class="h-full px-3 py-4 overflow-y-auto bg-dark text-leaf">
             <ul class="space-y-2 font-bold">
                 <li>
-                    <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                    <a href="/<?php echo Auth::user()->role?>" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
                     <img src="{{asset('images/logo.webp')}}" class="h-8 bg-white rounded-3xl" alt="Kupitilizer Logo" />
                     <span class="ml-3 text-leaf">Dashboard</span>
                     </a>
