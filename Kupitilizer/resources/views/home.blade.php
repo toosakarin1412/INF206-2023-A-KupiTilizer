@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="bg-cover" style="background-image: url('/images/bg1.png')">
+	<div class="bg-cover" style="background-image: url('/images/bg1.webp')">
 		<div class="md:px-20 py-24 bg-black opacity-80">
 			<p class="mx-5 text-3xl font-bold mb-5 text-leaf">Selamat Datang, di Kupitilizer</p>
 			<p class="mx-5 text-4xl font-bold text-white">
@@ -17,7 +17,7 @@
 		</div>
 	</div>
 
-	<div class="md:px-20 py-20" style="background-image: url('/images/bg2.png')">
+	<div class="md:px-20 py-20" style="background-image: url('/images/bg2.webp')">
 		<div class="mx-5">
 			<h2 class="text-4xl font-bold text-left text-dark mb-10">
 				What is <span class="text-leaf">Kupitilizer?</span>
@@ -41,7 +41,7 @@
 		</div>
 	</div>
 
-	<div class="" style="background-image: url('/images/bg3.png')">
+	<div class="" style="background-image: url('/images/bg3.webp')">
 		<div class="md:px-20 py-20 pt-5 bg-black opacity-80">
 			<div class="mb-20">
 				<p class="text-3xl text-center font-bold text-leaf">Our Features</p>
