@@ -89,7 +89,7 @@
 
         <div class="p-4 sm:ml-64">
             <!-- Breadcrumb -->
-            <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 mb-5" aria-label="Breadcrumb">
+            <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 mb-5 overflow-x-auto" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-3">
                     <li class="inline-flex items-center">
                         <a href="/<?php echo Auth::user()->role?>" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-leaf dark:text-gray-400 dark:hover:text-white">

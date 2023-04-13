@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['user-access:admin'])->group(function () {
         Route::get('/admin', [AdminController::class, 'adminDashboard']);
         Route::get('/admin/requestjemput', [RequestPenjemputanController::class, 'index']);
-        Route::get('/admin/pembelian', [RequestPenjemputanController::class, 'index']);
+        Route::get('/admin/pembelian', [PembelianController::class, 'index']);
     });
 
     Route::middleware(['user-access:manager'])->group(function () {
