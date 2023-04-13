@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/pembelian', [PembelianController::class, 'index']);
         Route::get('/admin/product', [ProductController::class, 'index']);
         Route::get('/admin/coupon', [CouponController::class, 'index']);
+        Route::get('/admin/manageuser', [UserController::class, 'manageUser']);
     });
 
     Route::middleware(['user-access:manager'])->group(function () {
@@ -62,6 +63,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/pembelian', [PembelianController::class, 'index']);
         Route::get('/manager/product', [ProductController::class, 'index']);
         Route::get('/manager/coupon', [CouponController::class, 'index']);
+        Route::get('/manager/manageadmin', [AdminController::class, 'manageAdmin']);
+        Route::get('/manager/manageuser', [UserController::class, 'manageUser']);
     });
 
     Route::middleware(['user-access:user'])->group(function () {

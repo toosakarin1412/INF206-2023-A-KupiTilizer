@@ -15,4 +15,9 @@ class UserController extends Controller
     {
         return view('home');
     }
+
+    public function manageUser(): View
+    {
+        return view('manageuser');
+    }
 }
