@@ -238,7 +238,7 @@
                         <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Daftarkan Akun</h3>
                         <form class="space-y-6" method="POST" action="{{ route('register') }}">
                             @csrf
-                            <div class="sm:grid sm:grid-cols-2">
+                            <div class="sm:grid sm:grid-cols-2 gap-4">
                                 <div class="sm:mr-5">
                                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                                     <input type="name" name="name" id="name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap Anda" required>
