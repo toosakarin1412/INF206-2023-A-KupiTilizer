@@ -19,7 +19,7 @@ class UserAccess
     public function handle(Request $request, Closure $next, $userType): Response
     {
         if(!Auth::check()){
-            return redirect('login');
+            return redirect()->back();
         }
 
         if(auth()->user()->role == $userType){
