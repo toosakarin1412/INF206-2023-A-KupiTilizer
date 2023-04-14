@@ -33,6 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/requestjemput', function () {
         return view('requestPenjemputan');
     });
+
+    Route::post('/requestjemput/create', [RequestPenjemputanController::class, 'create'])->name('penjemputan.create');
     
     Route::get('/statuspermintaan', function () {
         return view('statusPermintaanUser');
