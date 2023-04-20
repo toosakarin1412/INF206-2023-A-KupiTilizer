@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
         return view('statusPermintaanUser');
     });
 
+    
     Route::get('/coupon', function () {
         return view('coupon');
     });
