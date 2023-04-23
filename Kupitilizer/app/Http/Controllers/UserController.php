@@ -17,9 +17,14 @@ class UserController extends Controller
         return view('home');
     }
 
+    /**
+     * Mengambil data dari db
+     * 
+     */
     public function manageUser(): View
     {
         $users=DB::table('users')->where('role', 'user')->get();
         return view('manageuser',['users'=>$users]);
     }
+
 }
