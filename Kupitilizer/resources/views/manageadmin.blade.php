@@ -64,7 +64,6 @@
                     </td>
                     <td class="px-6 py-4 flex gap-1">
                         <!-- Modal toggle -->
-                        <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</a>
                         <a href="#" type="button" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Edit</a>
                         <a href="#" type="button" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Delete</a>                    
                     </td>
@@ -82,7 +81,6 @@
                     </td>
                     <td class="px-6 py-4 flex gap-1">
                         <!-- Modal toggle -->
-                        <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</a>
                         <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Edit</a>
                         <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Delete</a>                    
                     </td>
