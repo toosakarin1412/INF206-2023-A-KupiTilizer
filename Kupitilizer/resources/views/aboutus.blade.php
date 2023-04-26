@@ -8,7 +8,7 @@
 
         <!-- Diky -->
         <div>
-            <div class="grid md:grid-cols-3 grid-cols-1 py-20 px-20 items-center md:mx-20 my-5 gap-10 justify-evenly">
+            <div class="flex flex-wrap pt-20 px-20 md:mx-20 gap-10 md:justify-between justify-evenly">
                 <div>
                     <div class="flex justify-center">
                         <img src="/images/diky.jpeg" alt="Diky Wahyudi"
@@ -98,7 +98,7 @@
                 
             </div>
 
-            <div class="grid md:grid-cols-2 grid-cols-1 py-20 px-20 mx-2 my-5">
+            <div class="flex flex-wrap justify-evenly px-20 pt-10 mx-2 mb-10  gap-10">
                 <!-- M. Danish Rabbani -->
                 <div>
                     <div class="flex justify-center">
