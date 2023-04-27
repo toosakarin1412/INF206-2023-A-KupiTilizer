@@ -21,6 +21,6 @@ class AdminController extends Controller
     public function manageAdmin(): View
     {
         $admin=DB::table('users')->where('role', 'admin')->get();
-        return view('manageuser',['users'=>$admin]);
+        return view('manageadmin',['users'=>$admin]);
     }
 }
