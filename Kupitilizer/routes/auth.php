@@ -58,5 +58,4 @@ Route::middleware('auth')->group(function () {
                 ->name('logout');
     Route::post('register', [RegisteredUserController::class, 'add']);
     Route::post('register', [RegisteredUserController::class, 'addadmin']);
-
 });

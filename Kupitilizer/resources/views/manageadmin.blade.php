@@ -56,7 +56,7 @@
                     <td class="px-6 py-4 flex gap-1">
                         <!-- Modal toggle -->
                         <button type="button" data-modal-target="editAdminModal" data-modal-togle="editAdminModal" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Edit</button>
-                        <button type="button" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Delete</button>                    
+                        <buttotype="button" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Delete</buttotype=>                    
                     </td>
                 </tr>
                 @endforeach
