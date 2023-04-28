@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/coupon', [CouponController::class, 'index']);
         Route::get('/manager/manageadmin', [AdminController::class, 'manageAdmin']);
         Route::get('/manager/manageuser', [UserController::class, 'manageUser']);
+        Route::post('manager/add', [UserController::class, 'add']);
+        Route::post('manager/delete', [UserController::class, 'destroy']);
     });
 
     Route::middleware(['user-access:user'])->group(function () {
