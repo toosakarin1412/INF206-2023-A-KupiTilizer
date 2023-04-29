@@ -15,8 +15,8 @@
 </li>
 @endsection
 
-@section('content')
 
+@section('content')
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:p-4 text-gray-700 border border-gray-200 bg-gray-50">
         <div class="grid grid-cols-2">
             <div class="flex items-center justify-between py-4 px-4 sm:px-auto">
@@ -54,9 +54,13 @@
                     <th scope="col" class="px-6 py-3 w-1/4">{{ $item-> name }} </th>
                     <th scope="col" class="px-6 py-3">{{ $item-> email}} </th>
                     <td class="px-6 py-4 flex gap-1">
-                        <!-- Modal toggle -->
-                        <a href="#" type="button" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Edit</a>
-                        <a href="#" type="button" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Delete</a>                    
+                        <!-- Action button -->
+                        <a href="" type="button" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Edit</a>
+                        <form action="/manager/manageuser/delete/{{ $item->email }}" method="post" class='d-inline'>
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="mb-px w-full text-white bg-leaf focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="return confirm('Apakah anda yakin menghapus user ini?')">Hapus</button>
+                        </form>                
                     </td>
                 </tr>
                 @endforeach
@@ -76,31 +80,29 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-                <div>
-                    <img class = "h-auto mx-auto w-5/12" src="{{asset('images/logo.png')}}" alt="">
-                </div>
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambahkan Akun</h3>
-                <form class="space-y-6" method="POST" action="{{ route('register') }}">
+                <h3 class="mb-4 text-xl text-center font-medium text-gray-900 dark:text-white">Tambahkan Akun</h3>
+                <form class="space-y-6" method="POST" action="/manager/manageuser">
                     @csrf
-                    <div class="sm:grid sm:grid-cols-2 gap-4">
-                        <div class="sm:mr-5">
+                    <div>
+                        <div class="my-4">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                             <input type="name" name="name" id="name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap Anda" required>
                         </div>
-                        <div>
+                        <div class="my-4">
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                             <input type="email" name="email" id="email" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
                         </div>
-                        <div class="sm:mr-5">
+                        <div class="my-4">
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kata Sandi</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            <input type="password" name="password" id="password" placeholder="••••••••" class="@error('password') is-invalid @enderror border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            <p class = "mt-1 text-sm text-red-500">*Minimal 8 digit</p>
                         </div>
                         <div>
                             <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Konfirmasi Kata Sandi</label>
                             <input type="password" name="password_confirmation" id="password" placeholder="••••••••" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required autocomplete = "new-password">
                         </div>
                     </div>
-                    <button type="submit" class="mb-px w-full text-white bg-leaf focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Daftarkan Akun</button>
+                    <button type="submit" class="mb-px w-full text-white bg-leaf focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambahkan Akun</button>
                 </form>
             </div>
         </div>
