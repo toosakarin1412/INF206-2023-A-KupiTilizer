@@ -17,9 +17,6 @@ use Illuminate\View\View;
 
 
 
-/**
- * Class controller yang mengatur tampilan dashboard manajemen admin.
- */
 class AdminController extends Controller
 {
     /**
