@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 
-
 class AdminController extends Controller
 {
     /**
@@ -40,12 +39,7 @@ class AdminController extends Controller
         return view('manageadmin',['users'=>$admin]);
     }
 
-    /**
-     * Menambahkan admin baru ke dalam database.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function addAdmin(Request $request): RedirectResponse
     {
         $request->validate([
@@ -63,7 +57,7 @@ class AdminController extends Controller
 
     event(new Registered($user));
 
-    return redirect()->route('manager.manageadmin')->with('success', 'Admin berhasil ditambahkan');;
+    return redirect()->route('manager.manageadmin');
 }
 
     /**

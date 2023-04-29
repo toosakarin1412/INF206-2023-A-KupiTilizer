@@ -116,8 +116,6 @@
                 
                 <!-- Tambahkan Akun -->
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambahkan Akun</h3>
-                
-                <!-- Post route manager.addadmin -->
                 <form class="space-y-6" method="POST" action="{{ route('manager.addadmin') }}">
                     @csrf
                     <div class="sm:grid sm:grid-cols-2 gap-4">
