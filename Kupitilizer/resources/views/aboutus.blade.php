@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+    <!-- 
+        Div 1 For layouting , layout atas
+    -->
     <div class="w-full items-center justify-center">
         <div>
             <h1 class="text-center font-bold text-leaf mt-20 text-5xl font-sans">Our Team</h1>
         </div>
-
-        <!-- Diky -->
+     <!-- 
+        Diky Wahyudi
+     -->
         <div>
             <div class="flex flex-wrap pt-20 px-20 md:mx-20 gap-10 md:justify-between justify-evenly">
                 <div>
@@ -18,6 +22,7 @@
                         <h1 class="mt-8 text-center font-bold text-dark font-sans text-xl">Diky Wahyudi</h1>
                     </div>
                     <div class="flex justify-center">
+                        <!-- Link to Instagram --> 
                         <a href="https://www.instagram.com/dikywahyudi2002/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2476 2476" class="mt-3 h-7 w-7"
                                 id="instagram">
@@ -26,6 +31,7 @@
                                 </path>
                             </svg>
                         </a>
+                        <!-- Link to Github --> 
                         <a href="https://github.com/toosakarin1412/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"
                                 class="mt-2 ml-2 h-8 w-8" id="github">
@@ -36,8 +42,9 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Rahmat Azrima -->
+                <!-- 
+                Rahmat Azrima 
+                -->
                 <div>
                     <div class="flex justify-center">
                         <img src="/images/roy.jpeg" alt="Rahmat Azrima"
@@ -47,6 +54,7 @@
                         <h1 class="mt-8 text-center font-bold text-dark font-sans text-xl">Rahmat Azrima</h1>
                     </div>
                     <div class="flex justify-center">
+                        <!-- Link to Instagram --> 
                         <a href="https://www.instagram.com/rahmatazrima/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2476 2476" class="mt-3 h-7 w-7"
                                 id="instagram">
@@ -55,6 +63,7 @@
                                 </path>
                             </svg>
                         </a>
+                        <!-- Link to Github --> 
                         <a href="https://github.com/rahmatazrima/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"
                                 class="mt-2 ml-2 h-8 w-8" id="github">
@@ -65,8 +74,9 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Furqan Ramadhan -->
+                <!-- 
+                Furqan Ramadhan 
+                -->
                 <div>
                     <div class="flex justify-center">
                         <img src="/images/furqan.jpeg" alt="Furqan Ramadhan"
@@ -76,6 +86,7 @@
                         <h1 class="mt-8 text-center font-bold text-dark font-sans text-xl">Furqan Ramadhan</h1>
                     </div>
                     <div class="flex justify-center">
+                        <!-- Link to Instagram --> 
                         <a href="https://www.instagram.com/furqanramadhannn/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2476 2476" class="mt-3 h-7 w-7"
                                 id="instagram">
@@ -84,6 +95,7 @@
                                 </path>
                             </svg>
                         </a>
+                        <!-- Link to Github --> 
                         <a href="https://github.com/furqanramadhan/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"
                                 class="mt-2 ml-2 h-8 w-8" id="github">
@@ -94,12 +106,14 @@
                         </a>
                     </div>
                 </div>
-
-                
             </div>
-
-            <div class="flex flex-wrap justify-evenly px-20 pt-10 mx-2 mb-10  gap-10">
-                <!-- M. Danish Rabbani -->
+             <!-- 
+             Div 2 For layout bawah 
+             -->
+            <div class="grid md:grid-cols-2 grid-cols-1 py-20 px-20 mx-2 my-5">
+                <!-- 
+                M. Danish Rabbani
+                -->
                 <div>
                     <div class="flex justify-center">
                         <img src="/images/danish.jpeg" alt="M. Danish Rabbani"
@@ -109,6 +123,7 @@
                         <h1 class="mt-8 text-center font-bold text-dark font-sans text-xl">M. Danish Rabbani</h1>
                     </div>
                     <div class="flex justify-center">
+                        <!-- Link to Instagram --> 
                         <a href="https://www.instagram.com/mhd.danish.r/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2476 2476" class="mt-3 h-7 w-7"
                                 id="instagram">
@@ -117,6 +132,7 @@
                                 </path>
                             </svg>
                         </a>
+                        <!-- Link to Github --> 
                         <a href="https://github.com/danishrabbani/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"
                                 class="mt-2 ml-2 h-8 w-8" id="github">
@@ -127,9 +143,10 @@
                         </a>
                     </div>
                 </div>
-
+                <!-- 
+                Fatiya Humaira Yunaz
+                -->
                 <div>
-                <!-- Fatiya Humaira Yunaz -->
                     <div class="flex justify-center">
                         <img src="/images/rara.jpeg" alt="Fatiya Humaira Yunaz"
                             class="w-40 h-40 object-cover object-center rounded-full transform scale-125">
@@ -138,6 +155,7 @@
                         <h1 class="mt-8 text-center font-bold text-dark font-sans text-xl">Fatiya Humaira Yunaz</h1>
                     </div>
                     <div class="flex justify-center">
+                        <!-- Link to Instagram --> 
                         <a href="https://www.instagram.com/fatiya_rara/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2476 2476" class="mt-3 h-7 w-7"
                                 id="instagram">
@@ -146,6 +164,7 @@
                                 </path>
                             </svg>
                         </a>
+                        <!-- Link to Github --> 
                         <a href="https://github.com/fatiyahumaira/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"
                                 class="mt-2 ml-2 h-8 w-8" id="github">
