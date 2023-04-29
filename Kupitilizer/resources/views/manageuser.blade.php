@@ -17,6 +17,11 @@
 
 
 @section('content')
+    @if(session()->has('success'))
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+            {{session('success')}}
+        </div>
+    @endif
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:p-4 text-gray-700 border border-gray-200 bg-gray-50">
         <div class="grid grid-cols-2">
             <div class="flex items-center justify-between py-4 px-4 sm:px-auto">
