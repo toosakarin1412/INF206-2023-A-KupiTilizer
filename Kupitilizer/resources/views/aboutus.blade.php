@@ -42,7 +42,6 @@
                         </a>
                     </div>
                 </div>
-
                 <!-- 
                 Rahmat Azrima 
                 -->
@@ -75,7 +74,6 @@
                         </a>
                     </div>
                 </div>
-
                 <!-- 
                 Furqan Ramadhan 
                 -->
@@ -109,7 +107,6 @@
                     </div>
                 </div>
             </div>
-
              <!-- 
              Div 2 For layout bawah 
              -->
