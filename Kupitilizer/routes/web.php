@@ -25,6 +25,10 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/aboutus', function(){
+    return view('aboutus');
+})->name('aboutus');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -69,7 +73,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/product', [ProductController::class, 'index']);
         Route::get('/manager/coupon', [CouponController::class, 'index']);
         Route::get('/manager/manageadmin', [AdminController::class, 'manageAdmin']);
+
         Route::get('/manager/manageuser', [UserController::class, 'manageUser']);
+        Route::post('/manager/manageuser', [UserController::class, 'add'])->name('user.add');
+        Route::delete('/manager/manageuser/delete/{email}', [UserController::class, 'destroy'])->name('user.destroy');
+        Route::get('/manager/manageuser/edit/{email}', [UserController::class, 'show']);
+        Route::patch('/manager/manageuser/update/{email}', [UserController::class, 'update']);
+
         Route::get('/manager/manageradmin', [AdminController::class, 'manageAdmin'])->name('manager.manageadmin');
         Route::post('/manager/addadmin', [AdminController::class, 'addAdmin'])->name('manager.addadmin');
         Route::post('/manager/manageuser', [UserController::class, 'add'])->name('user.add');
