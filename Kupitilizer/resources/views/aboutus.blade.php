@@ -107,9 +107,13 @@
                     </div>
                 </div>
             </div>
-
+             <!-- 
+             Div 2 For layout bawah 
+             -->
             <div class="grid md:grid-cols-2 grid-cols-1 py-20 px-20 mx-2 my-5">
-                <!-- M. Danish Rabbani -->
+                <!-- 
+                M. Danish Rabbani
+                -->
                 <div>
                     <div class="flex justify-center">
                         <img src="/images/danish.jpeg" alt="M. Danish Rabbani"
