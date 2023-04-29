@@ -56,7 +56,7 @@
                     <td class="px-6 py-4">
                         <div class="flex items-center">
                             <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div> 
-                            <span>{{$item->status}}</span>
+                            <span class="capitalize">{{$item->status}}</span>
                         </div>
                     </td>
                     <td class="px-6 py-4 flex gap-1">

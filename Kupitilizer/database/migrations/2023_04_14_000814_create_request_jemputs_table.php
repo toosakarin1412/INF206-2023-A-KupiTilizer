@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('request_jemputs', function (Blueprint $table) {
             $table->string('id');
             $table->string('user_id');
-            $table->string('name')->default('Pengguna');
+            $table->string('name');
             $table->string('no_hp');
             $table->string('alamat');
             $table->string('jenis_sampah');
