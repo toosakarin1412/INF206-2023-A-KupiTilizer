@@ -99,6 +99,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['user-access:user'])->group(function () {
         Route::get('/user', [UserController::class, 'userHome']);
 
+
     });
 });
 
