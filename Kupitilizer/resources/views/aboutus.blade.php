@@ -12,7 +12,7 @@
         Diky Wahyudi
      -->
         <div>
-            <div class="grid md:grid-cols-3 grid-cols-1 py-20 px-20 items-center md:mx-20 my-5 gap-10 justify-evenly">
+            <div class="flex flex-wrap pt-20 px-20 md:mx-20 gap-10 md:justify-between justify-evenly">
                 <div>
                     <div class="flex justify-center">
                         <img src="/images/diky.jpeg" alt="Diky Wahyudi"
