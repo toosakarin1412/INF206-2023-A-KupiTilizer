@@ -59,12 +59,17 @@
                     <th scope="col" class="px-6 py-3 w-1/4">{{ $item-> name }} </th>
                     <th scope="col" class="px-6 py-3">{{ $item-> email}} </th>
                     <td class="px-6 py-4 flex gap-1">
-                        <!-- Action button -->
-                        <a href="" type="button" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Edit</a>
+                        <!-- Edit button -->
+                        <form action="/manager/manageuser/edit/{{ $item->email }}" method="get" class='d-inline'>
+                            @method('get')
+                            @csrf
+                            <button type="submit" class="mb-px w-full text-white bg-leaf font-medium rounded-lg text-sm px-5 py-2.5 text-center">Edit</button>
+                        </form>
+                        <!-- Delete button -->
                         <form action="/manager/manageuser/delete/{{ $item->email }}" method="post" class='d-inline'>
                             @method('delete')
                             @csrf
-                            <button type="submit" class="mb-px w-full text-white bg-leaf focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="return confirm('Apakah anda yakin menghapus user ini?')">Hapus</button>
+                            <button type="submit" class="mb-px w-full text-white bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onclick="return confirm('Apakah anda yakin menghapus user ini?')">Hapus</button>
                         </form>                
                     </td>
                 </tr>
@@ -113,3 +118,5 @@
         </div>
     </div>
 </div> 
+
+
