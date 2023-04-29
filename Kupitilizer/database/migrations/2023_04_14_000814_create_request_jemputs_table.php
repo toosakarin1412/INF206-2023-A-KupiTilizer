@@ -12,15 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('request_jemputs', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('np_hp');
+            $table->string('id');
+            $table->string('user_id');
+            $table->string('name')->default('Pengguna');
+            $table->string('no_hp');
             $table->string('alamat');
             $table->string('jenis_sampah');
             $table->integer('total_sampah');
             $table->date('tanggal_jemput');
             $table->time('waktu_jemput');
-            $table->string('status');
+            $table->string('status')->default('waiting');
             $table->timestamps();
         });
     }
