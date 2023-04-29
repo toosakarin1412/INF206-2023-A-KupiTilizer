@@ -6,6 +6,9 @@ use App\Http\Requests\StoreRequestJemputRequest;
 use App\Http\Requests\UpdateRequestJemputRequest;
 use App\Models\RequestJemput;
 use Illuminate\Http\Request;
+use \Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RequestJemputController extends Controller
 {
@@ -13,14 +16,31 @@ class RequestJemputController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
-        return view('adminpenjemputan');
+        $data = DB::table('request_jemputs')->get(['id', 'name', 'status']);
+        // dd($data);
+        return view('adminpenjemputan', ['dataRequest' => $data]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request){
-        dd($request);
+        $date = Carbon::now();
+        // dd($request);
+        // dd($date->format('Ymd').Auth::user()->id.$date->format('his'));
+        Requestjemput::create([
+            'id' => $date->format('Ymd').Auth::user()->id.$date->format('his'),
+            'user_id' => Auth::user()->id,
+            'name' => Auth::user()->name,
+            'no_hp' => $request->hp,
+            'alamat' => $request->alamat,
+            'jenis_sampah' => $request->jenisSampah,
+            'total_sampah' => $request->totalSampah,
+            'tanggal_jemput' => $request->tanggalJemput,
+            'waktu_jemput' => $request->waktuJemput,
+        ]);
+
+        return redirect()->back();
     }
 
     /**

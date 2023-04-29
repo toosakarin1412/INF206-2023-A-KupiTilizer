@@ -45,69 +45,30 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($dataRequest as $item)
                 <tr class="bg-white hover:bg-gray-50 rounded-xl">
                     <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                        378573284019741
+                        {{$item->id}}
                     </th>
                     <td class="px-6 py-4">
-                        Yahdina Ahsya
+                        {{$item->name}}
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center">
                             <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div> 
-                            <span>Waiting</span>
+                            <span>{{$item->status}}</span>
                         </div>
                     </td>
                     <td class="px-6 py-4 flex gap-1">
                         <!-- Modal toggle -->
                         <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</a>
+                        @if($item->status == "waiting")
                         <a href="#" type="button" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Accept</a>
-                        <a href="#" type="button" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Decline</a>                    
+                        <a href="#" type="button" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Decline</a>  
+                        @endif                  
                     </td>
                 </tr>
-                
-                <tr class="bg-white hover:bg-gray-50 rounded-xl">
-                    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                        378573284650952
-                    </th>
-                    <td class="px-6 py-4">
-                        Yahdina Ahsya
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> 
-                            <span>Accepted</span>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 flex gap-1">
-                        <!-- Modal toggle -->
-                        <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</a>
-                        
-                        <!-- <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Accept</a>
-                        <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Decline</a>                     -->
-                    </td>
-                </tr>
-
-                <tr class="bg-white hover:bg-gray-50 rounded-xl">
-                    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                        378573284065025
-                    </th>
-                    <td class="px-6 py-4">
-                        Yahdina Ahsya
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div> 
-                            <span>Declined</span>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 flex gap-1">
-                        <!-- Modal toggle -->
-                        <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</a>
-                        <!-- <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Accept</a>
-                        <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Decline</a>                     -->
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
