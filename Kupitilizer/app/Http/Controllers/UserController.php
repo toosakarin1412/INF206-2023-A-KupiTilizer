@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-$koneksi = mysqli_connect("localhost","root","","kupitilizer");
 
 class UserController extends Controller
 {
