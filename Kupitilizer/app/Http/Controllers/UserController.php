@@ -53,7 +53,7 @@ class UserController extends Controller
     public function destroy($email): RedirectResponse
     {
         DB::table('users')->where('email', $email)->delete();
-        return redirect('manager/manageuser');
+        return redirect('manager/manageuser')->with('success', 'User berhasil dihapus');
     }
 
 }
