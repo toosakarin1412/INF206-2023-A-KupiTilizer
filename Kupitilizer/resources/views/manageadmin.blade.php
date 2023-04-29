@@ -55,8 +55,8 @@
                     <th scope="col" class="px-6 py-3">{{ $item-> email}} </th>
                     <td class="px-6 py-4 flex gap-1">
                         <!-- Modal toggle -->
-                        <button type="button" data-modal-target="editAdminModal" data-modal-togle="editAdminModal" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Edit</button>
-                        <buttotype="button" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Delete</buttotype=>                    
+                        <button type="button" data-modal-target="editAdminModal" data-modal-toggle="editAdminModal" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Edit</button>
+                        <button type="button" class="bg-red-500 text-white font-bold rounded-md px-4 py-2">Delete</button>
                     </td>
                 </tr>
                 @endforeach
@@ -80,7 +80,7 @@
                     <img class = "h-auto mx-auto w-5/12" src="{{asset('images/logo.png')}}" alt="">
                 </div>
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambahkan Akun</h3>
-                <form class="space-y-6" method="POST" action="{{ route('register') }}">
+                <form class="space-y-6" method="POST" action="{{ route('manager.addadmin') }}">
                     @csrf
                     <div class="sm:grid sm:grid-cols-2 gap-4">
                         <div class="sm:mr-5">
