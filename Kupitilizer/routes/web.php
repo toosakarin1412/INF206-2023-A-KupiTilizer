@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
         return view('statusPermintaanUser');
     });
 
-    
+
     Route::get('/coupon', function () {
         return view('coupon');
     });
@@ -62,6 +62,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/product', [ProductController::class, 'index']);
         Route::get('/admin/coupon', [CouponController::class, 'index']);
         Route::get('/admin/manageuser', [UserController::class, 'manageUser']);
+        Route::get('/admin/addadmin', [AdminController::class, 'addadmin']); // menambahkan rute baru ke AdminController
+
     });
 
     Route::middleware(['user-access:manager'])->group(function () {
@@ -72,10 +74,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/coupon', [CouponController::class, 'index']);
         Route::get('/manager/manageadmin', [AdminController::class, 'manageAdmin']);
         Route::get('/manager/manageuser', [UserController::class, 'manageUser']);
+        Route::get('/manager/manageradmin', [AdminController::class, 'manageAdmin'])->name('manager.manageadmin');
+        Route::post('/manager/addadmin', [AdminController::class, 'addAdmin'])->name('manager.addadmin');
     });
 
     Route::middleware(['user-access:user'])->group(function () {
         Route::get('/user', [UserController::class, 'userHome']);
+
     });
 });
 
