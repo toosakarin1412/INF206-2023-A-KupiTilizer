@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
 @section('content')
     <!-- 
         Div 1 For layouting , layout atas
