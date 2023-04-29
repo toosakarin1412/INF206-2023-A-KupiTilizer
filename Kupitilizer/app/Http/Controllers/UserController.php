@@ -47,13 +47,37 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('manager/manageuser');
+        return redirect('manager/manageuser')->with('success', 'User berhasil ditambahkan');
     }
     
     public function destroy($email): RedirectResponse
     {
         DB::table('users')->where('email', $email)->delete();
         return redirect('manager/manageuser')->with('success', 'User berhasil dihapus');
+    }
+
+    public function show($email): View
+    {   $user=DB::table('users')->where('email', $email)->get();
+        return view('edituser',['user'=>$user]);
+    }
+
+    public function update(Request $request, $email): RedirectResponse
+    {   
+
+        $rules = [
+            'name' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ];
+
+        if($request->email != $email){
+            $rules['email'] = ['required', 'string', 'email', 'max:255', 'unique:'.User::class];
+        }
+
+        $validatedData = $request->validate($rules);
+
+        DB::table('users')->where('email', $email)
+            ->update($validatedData);        
+        return redirect('manager/manageuser')->with('success', 'Data user berhasil diedit!');
     }
 
 }
