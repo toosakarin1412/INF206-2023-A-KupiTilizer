@@ -31,45 +31,72 @@
         <div class="px-6 py-4 w-full md-:w-1/2 ">
             <!-- Name -->
             <div class = "mt-4">
+
+                <!-- Label form -->
                 <x-input-label for="name" :value="__('Nama')" />
+                
+                <!-- Input serta diberikan value berupa data yg telah ada sebelumnya -->
                 <x-text-input id="name" class="w-full block mt-1" type="text" name="name" required value="{{ old('name', $item->name) }}"/>
+
+                <!-- Pesan jika ada error -->
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
+
             </div>
 
             <!-- Email Address -->
             <div class="mt-4">
+
+                <!-- Label form -->
                 <x-input-label for="email" :value="__('Email')" />
+
+                <!-- Input serta diberikan value berupa data yg telah ada sebelumnya -->
                 <x-text-input id="email" class="w-full block mt-1 " type="email" name="email" :value="old('email',$item->email)" required autocomplete="username" />
+
+                <!-- Pesan jika ada error -->
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
 
+                <!-- Label form -->
+                <x-input-label for="password" :value="__('Password')" />
+                
+                <!-- Input Password -->
                 <x-text-input id="password" class="block mt-1 w-full"
                                 type="password"
                                 name="password"
                                 required autocomplete="new-password" 
                                 placeholder="••••••••"/>
 
+                <!-- Pesan jika ada error -->
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
+
+                <!-- Label form -->
                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
+                <!-- Input Password Confirmation-->
                 <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required autocomplete="new-password" 
                                 placeholder="••••••••"/>
 
+                <!-- Pesan jika ada error -->
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
+
+            <!-- Button Submit -->
             <button type="submit" class="mt-4 mb-px w-3/12 text-white bg-leaf focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Data Akun</button>
+        
         </div>
+        
     </form>
-@endforeach
+    @endforeach
+
 </div>
 @endsection
