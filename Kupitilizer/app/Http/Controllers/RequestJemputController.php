@@ -26,7 +26,7 @@ class RequestJemputController extends Controller
      */
     public function create(Request $request){
         $date = Carbon::now();
-        // dd($request);
+        // dd(Auth::user()->name);
         // dd($date->format('Ymd').Auth::user()->id.$date->format('his'));
         Requestjemput::create([
             'id' => $date->format('Ymd').Auth::user()->id.$date->format('his'),

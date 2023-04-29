@@ -17,6 +17,7 @@ class RequestJemput extends Model
     protected $fillable = [
         'id',
         'user_id',
+        'name',
         'no_hp',
         'alamat',
         'jenis_sampah',
