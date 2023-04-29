@@ -39,10 +39,11 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::post('/requestjemput/create', [RequestPenjemputanController::class, 'create'])->name('penjemputan.create');
-    
+
     Route::get('/statuspermintaan', function () {
         return view('statusPermintaanUser');
     });
+
 
     Route::get('/coupon', function () {
         return view('coupon');
@@ -61,6 +62,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/product', [ProductController::class, 'index']);
         Route::get('/admin/coupon', [CouponController::class, 'index']);
         Route::get('/admin/manageuser', [UserController::class, 'manageUser']);
+        Route::get('/admin/addadmin', [AdminController::class, 'addadmin']); // menambahkan rute baru ke AdminController
+
     });
 
     Route::middleware(['user-access:manager'])->group(function () {
@@ -70,15 +73,24 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/product', [ProductController::class, 'index']);
         Route::get('/manager/coupon', [CouponController::class, 'index']);
         Route::get('/manager/manageadmin', [AdminController::class, 'manageAdmin']);
+
         Route::get('/manager/manageuser', [UserController::class, 'manageUser']);
         Route::post('/manager/manageuser', [UserController::class, 'add'])->name('user.add');
         Route::delete('/manager/manageuser/delete/{email}', [UserController::class, 'destroy'])->name('user.destroy');
         Route::get('/manager/manageuser/edit/{email}', [UserController::class, 'show']);
         Route::patch('/manager/manageuser/update/{email}', [UserController::class, 'update']);
+
+        Route::get('/manager/manageradmin', [AdminController::class, 'manageAdmin'])->name('manager.manageadmin');
+        Route::post('/manager/addadmin', [AdminController::class, 'addAdmin'])->name('manager.addadmin');
+        Route::post('/manager/manageuser', [UserController::class, 'add'])->name('user.add');
+        Route::delete('/manager/manageadmin/delete/{email}', [AdminController::class, 'destroy'])->name('user.destroy');
+        Route::get('/manager/manageadmin/edit/{email}', [AdminController::class, 'show']);
+        Route::patch('/manager/manageadmin/update/{email}', [AdminController::class, 'update']);
     });
 
     Route::middleware(['user-access:user'])->group(function () {
         Route::get('/user', [UserController::class, 'userHome']);
+
     });
 });
 
