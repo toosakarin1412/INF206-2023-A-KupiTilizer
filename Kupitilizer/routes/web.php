@@ -67,8 +67,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/coupon', [CouponController::class, 'index']);
         Route::get('/manager/manageadmin', [AdminController::class, 'manageAdmin']);
         Route::get('/manager/manageuser', [UserController::class, 'manageUser']);
-        Route::post('/manager/manageuser', [UserController::class, 'add']);
-        Route::delete('/manager/manageuser/delete/{email}', [UserController::class, 'destroy']);
+        Route::post('/manager/manageuser', [UserController::class, 'add'])->name('user.add');
+        Route::delete('/manager/manageuser/delete/{email}', [UserController::class, 'destroy'])->name('user.destroy');
+        Route::get('/manager/manageuser/edit/{email}', [UserController::class, 'show']);
+        Route::patch('/manager/manageuser/update/{email}', [UserController::class, 'update']);
     });
 
     Route::middleware(['user-access:user'])->group(function () {
