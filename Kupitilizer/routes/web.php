@@ -76,6 +76,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/manageuser', [UserController::class, 'manageUser']);
         Route::get('/manager/manageradmin', [AdminController::class, 'manageAdmin'])->name('manager.manageadmin');
         Route::post('/manager/addadmin', [AdminController::class, 'addAdmin'])->name('manager.addadmin');
+        Route::post('/manager/manageuser', [UserController::class, 'add'])->name('user.add');
+        Route::delete('/manager/manageadmin/delete/{email}', [AdminController::class, 'destroy'])->name('user.destroy');
+        Route::get('/manager/manageadmin/edit/{email}', [AdminController::class, 'show']);
+        Route::patch('/manager/manageadmin/update/{email}', [AdminController::class, 'update']);
     });
 
     Route::middleware(['user-access:user'])->group(function () {
