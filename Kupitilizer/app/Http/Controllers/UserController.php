@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
+$koneksi = mysqli_connect("localhost","root","","kupitilizer");
+
 class UserController extends Controller
 {
     public function userHome()
@@ -45,6 +47,12 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        return redirect('manager/manageuser');
+    }
+    
+    public function destroy($email): RedirectResponse
+    {
+        DB::table('users')->where('email', $email)->delete();
         return redirect('manager/manageuser');
     }
 
