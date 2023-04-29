@@ -17,6 +17,7 @@ use Illuminate\View\View;
 
 
 
+
 class AdminController extends Controller
 {
     public function adminDashboard(): View
@@ -48,6 +49,39 @@ class AdminController extends Controller
 
     event(new Registered($user));
 
-    return redirect()->route('manager.manageadmin');
+    return redirect()->route('manager.manageadmin')->with('success', 'Admin berhasil ditambahkan');;
 }
+public function destroy($email): RedirectResponse
+    {
+        DB::table('users')->where('email', $email)->delete();
+        return redirect('manager/manageadmin')->with('success', 'Admin berhasil dihapus');
+    }
+
+    public function show($email): View
+    {   $user=DB::table('users')->where('email', $email)->get();
+        return view('editadmin',['user'=>$user]);
+    }
+
+    public function update(Request $request, $email): RedirectResponse
+    {   
+
+        $rules = [
+            'name' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ];
+
+        if($request->email != $email){
+            $rules['email'] = ['required', 'string', 'email', 'max:255', 'unique:'.User::class];
+        }
+
+        $request->validate($rules);
+
+        DB::table('users')->where('email', $email)
+            ->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            ]);        
+        return redirect('manager/manageadmin')->with('success', 'Data Admin berhasil diedit!');
+    }
 }
