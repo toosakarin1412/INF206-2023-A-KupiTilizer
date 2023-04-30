@@ -36,7 +36,7 @@
                             <ul class="py-2" aria-labelledby="user-menu-button">
                                 @if(Auth::user()->role == "user")
                                 <li>
-                                    <a href="{{url('/profile')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                                    <a href="/profile/<?php echo Auth::user()->id?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
                                 </li>
                                 @else
                                 <li>
