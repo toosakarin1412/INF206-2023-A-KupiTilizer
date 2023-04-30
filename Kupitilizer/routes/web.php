@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RequestPenjemputanController;
+use App\Http\Controllers\RequestJemputController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\PembelianController;
@@ -30,7 +30,7 @@ Route::get('/aboutus', function(){
 })->name('aboutus');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
@@ -38,8 +38,8 @@ Route::middleware('auth')->group(function () {
         return view('requestPenjemputan');
     });
 
-    Route::post('/requestjemput/create', [RequestPenjemputanController::class, 'create'])->name('penjemputan.create');
-
+    Route::post('/requestjemput/create', [RequestJemputController::class, 'create'])->name('penjemputan.create');
+    
     Route::get('/statuspermintaan', function () {
         return view('statusPermintaanUser');
     });
@@ -57,7 +57,10 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['user-access:admin'])->group(function () {
         Route::get('/admin', [AdminController::class, 'adminDashboard']);
-        Route::get('/admin/requestjemput', [RequestPenjemputanController::class, 'index']);
+
+        Route::get('/admin/requestjemput', [RequestJemputController::class, 'index']);
+        Route::get('/admin/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
+
         Route::get('/admin/pembelian', [PembelianController::class, 'index']);
         Route::get('/admin/product', [ProductController::class, 'index']);
         Route::get('/admin/coupon', [CouponController::class, 'index']);
@@ -68,7 +71,12 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['user-access:manager'])->group(function () {
         Route::get('/manager', [ManagerController::class, 'managerDashboard']);
-        Route::get('/manager/requestjemput', [RequestPenjemputanController::class, 'index']);
+
+        Route::get('/manager/requestjemput', [RequestJemputController::class, 'index']);
+        Route::get('/manager/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
+        Route::get('/manager/requestjemput/accept/{id}', [RequestJemputController::class, 'acceptRequest']);
+        Route::get('/manager/requestjemput/decline/{id}', [RequestJemputController::class, 'declineRequest']);
+
         Route::get('/manager/pembelian', [PembelianController::class, 'index']);
         Route::get('/manager/product', [ProductController::class, 'index']);
         Route::get('/manager/coupon', [CouponController::class, 'index']);
@@ -90,6 +98,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['user-access:user'])->group(function () {
         Route::get('/user', [UserController::class, 'userHome']);
+
 
     });
 });
