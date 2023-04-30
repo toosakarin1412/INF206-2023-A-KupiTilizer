@@ -87,6 +87,9 @@
                             @csrf
                             <button type="submit" class="mb-px w-full text-white bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onclick="return confirm('Apakah anda yakin menghapus admin ini?')">Hapus</button>
                         </form>                
+                        <!-- Modal toggle -->
+                        <button type="button" data-modal-target="editAdminModal" data-modal-toggle="editAdminModal" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Edit</button>
+                        <button type="button" class="bg-red-500 text-white font-bold rounded-md px-4 py-2">Delete</button>
                     </td>
                 </tr>
                 @endforeach
@@ -113,8 +116,6 @@
                 
                 <!-- Tambahkan Akun -->
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambahkan Akun</h3>
-                
-                <!-- Post route manager.addadmin -->
                 <form class="space-y-6" method="POST" action="{{ route('manager.addadmin') }}">
                     @csrf
                     <div class="sm:grid sm:grid-cols-2 gap-4">
