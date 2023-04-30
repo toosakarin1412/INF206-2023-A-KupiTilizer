@@ -57,7 +57,10 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['user-access:admin'])->group(function () {
         Route::get('/admin', [AdminController::class, 'adminDashboard']);
+
         Route::get('/admin/requestjemput', [RequestJemputController::class, 'index']);
+        Route::get('/admin/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
+
         Route::get('/admin/pembelian', [PembelianController::class, 'index']);
         Route::get('/admin/product', [ProductController::class, 'index']);
         Route::get('/admin/coupon', [CouponController::class, 'index']);
@@ -68,7 +71,12 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['user-access:manager'])->group(function () {
         Route::get('/manager', [ManagerController::class, 'managerDashboard']);
+
         Route::get('/manager/requestjemput', [RequestJemputController::class, 'index']);
+        Route::get('/manager/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
+        Route::get('/manager/requestjemput/accept/{id}', [RequestJemputController::class, 'acceptRequest']);
+        Route::get('/manager/requestjemput/decline/{id}', [RequestJemputController::class, 'declineRequest']);
+
         Route::get('/manager/pembelian', [PembelianController::class, 'index']);
         Route::get('/manager/product', [ProductController::class, 'index']);
         Route::get('/manager/coupon', [CouponController::class, 'index']);

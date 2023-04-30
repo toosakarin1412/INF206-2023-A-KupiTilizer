@@ -14,7 +14,7 @@ class RequestJemputSeeder extends Seeder
     public function run(): void
     {
         Requestjemput::create([
-            'id' => '280702',
+            'id' => '202304293073126',
             'user_id' => '0023',
             'name' => 'Yahdina Ahsya',
             'no_hp' => '082384400664',
@@ -26,7 +26,7 @@ class RequestJemputSeeder extends Seeder
         ]);
 
         Requestjemput::create([
-            'id' => '547698',
+            'id' => '202304303095303',
             'user_id' => '0023',
             'name' => 'Yahdina Ahsya',
             'no_hp' => '082384400664',
@@ -38,7 +38,7 @@ class RequestJemputSeeder extends Seeder
         ]);
 
         Requestjemput::create([
-            'id' => '143256',
+            'id' => '202304307095531',
             'user_id' => '0023',
             'name' => 'Yahdina Ahsya',
             'no_hp' => '082384400664',
