@@ -10,7 +10,7 @@
 <li>
     <div class="flex items-center">
         <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-        <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-leaf md:ml-2 dark:text-gray-400 dark:hover:text-white">Request Penjemputan</a>
+        <a href="/<?php echo Auth::user()->role?>/requestjemput" class="ml-1 text-sm font-medium text-gray-700 hover:text-leaf md:ml-2 dark:text-gray-400 dark:hover:text-white">Request Penjemputan</a>
     </div>
 </li>
 @endsection
@@ -55,78 +55,33 @@
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div> 
+                            @if($item->status == "waiting")
+                            <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div>
+                            @elseif($item->status == "accepted")
+                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
+                            @else
+                            <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div>
+                            @endif
                             <span class="capitalize">{{$item->status}}</span>
                         </div>
                     </td>
                     <td class="px-6 py-4 flex gap-1">
-                        <!-- Modal toggle -->
-                        <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</a>
+                        <form action="/<?php echo Auth::user()->role?>/requestjemput/detail/{{$item->id}}" method="get" class='d-inline'>
+                            <button type="submit" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</button>
+                        </form>
                         @if($item->status == "waiting")
-                        <a href="#" type="button" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Accept</a>
-                        <a href="#" type="button" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Decline</a>  
+                        <form action="/<?php echo Auth::user()->role?>/requestjemput/accept/{{$item->id}}" method="get" class='d-inline'>
+                            <button type="submit" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Accept</button>
+                        </form>
+                        <form action="/<?php echo Auth::user()->role?>/requestjemput/decline/{{$item->id}}" method="get" class='d-inline'>
+                            <button type="submit" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Decline</button>
+                        </form>
                         @endif                  
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    </div>
-    <!-- Edit user modal -->
-    <div id="editUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <!-- Modal header -->
-                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                        Detail Permintaan Penjemputan
-                    </h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editUserModal">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="p-6 space-y-6">
-                    <div class="grid grid-cols-6 gap-6">
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                            <input type="text" name="name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-leaf  block w-full p-2.5 " placeholder="Nama" disabled>
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Handphone</label>
-                            <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-leaf  block w-full p-2.5 " placeholder="0823xxxxxxxx" disabled>
-                        </div>
-                        <div class="col-span-6 sm:col-span-6">
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                            <textarea name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-leaf  block w-full p-2.5 " placeholder="Alamat"disabled></textarea>
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Sampah</label>
-                            <input type="number" name="phone-number" id="phone-number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-leaf  block w-full p-2.5 " placeholder="Ampas Kopi"disabled>
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Berat Sampah</label>
-                            <input type="text" name="department" id="department" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-leaf  block w-full p-2.5 " placeholder="10 Kg"disabled>
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Penjemputan</label>
-                            <input type="number" name="company" id="company" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-leaf  block w-full p-2.5 " placeholder="4 September 2023"disabled>
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="current-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Penjemputan</label>
-                            <input type="password" name="current-password" id="current-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-leaf  block w-full p-2.5 " placeholder="10 AM"disabled>
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
-                                <span class="w-2 h-2 mr-1 bg-green-500 rounded-full"></span>
-                                <span>Accepted</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
     </div>
 </div>
 

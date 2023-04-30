@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('request_jemputs', function (Blueprint $table) {
-            $table->string('id');
+            $table->string('id')->unique();
             $table->string('user_id');
             $table->string('name');
             $table->string('no_hp');

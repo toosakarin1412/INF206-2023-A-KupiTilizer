@@ -44,6 +44,40 @@ class RequestJemputController extends Controller
     }
 
     /**
+     * 
+     */
+    public function detail($id)
+    {
+        $data = DB::table('request_jemputs')->where('id', $id)->get();
+
+        return view('detailRequestPenjemputan', ['data' => $data[0]]);
+    }
+
+    /**
+     * 
+     */
+    public function acceptRequest($id)
+    {
+        DB::table('request_jemputs')->where('id', $id)->update([
+            'status' => 'accepted'
+        ]);
+        return redirect()->back();
+    }
+
+    /**
+     * 
+     */
+    public function declineRequest($id)
+    {
+        DB::table('request_jemputs')->where('id', $id)->update([
+            'status' => 'decline'
+        ]);
+        return redirect()->back();
+    }
+
+    
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreRequestJemputRequest $request)
