@@ -110,7 +110,7 @@
              <!-- 
              Div 2 For layout bawah 
              -->
-            <div class="grid md:grid-cols-2 grid-cols-1 py-20 px-20 mx-2 my-5">
+            <div class="flex flex-wrap pt-20 px-20 md:mx-20 gap-10 justify-evenly mb-20">
                 <!-- 
                 M. Danish Rabbani
                 -->
