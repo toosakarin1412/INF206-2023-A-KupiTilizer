@@ -22,7 +22,7 @@
 @endsection
 
 @section('content')
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:p-4 text-gray-700 border border-gray-200 bg-gray-50">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 text-gray-700 border border-gray-200 bg-gray-50">
     <div class="grid gap-5 grid-cols-1 md:grid-cols-2">
         <div>
             <label for="helper-text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Penjemputan</label>
