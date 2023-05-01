@@ -12,7 +12,7 @@
 			</p>
 			<div class="flex fles-wrap">
 				<a data-modal-hide="login-modal" data-modal-target="register-modal" data-modal-toggle="register-modal" type="button" class="mx-5 text-white bg-leaf hover:bg-gray-900 py-3 px-8 rounded-xl">Join Now</a>
-				<a href="" class="mx-5 text-white bg-gray-900 hover:bg-leaf py-3 px-8 rounded-xl">Contact Us</a>
+				<a href="{{url('/aboutus')}}" class="mx-5 text-white bg-gray-900 hover:bg-leaf py-3 px-8 rounded-xl">Contact Us</a>
 			</div>
 		</div>
 	</div>
