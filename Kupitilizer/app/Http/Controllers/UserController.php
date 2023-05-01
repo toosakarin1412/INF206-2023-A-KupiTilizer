@@ -21,6 +21,12 @@ class UserController extends Controller
         return view('home');
     }
 
+    public function userRequest($id)
+    {
+        $data = $data = DB::table('request_jemputs')->where('user_id', $id)->get();
+        return view('statusPermintaanUser', ['dataRequest' => $data]);
+    }
+
     /**
      * Mengambil data dari db
      * @return view('manageuser',['users'=>$users])

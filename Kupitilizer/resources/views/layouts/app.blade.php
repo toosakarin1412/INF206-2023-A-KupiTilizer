@@ -38,6 +38,9 @@
                                 <li>
                                     <a href="/profile/<?php echo Auth::user()->id?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
                                 </li>
+                                <li>
+                                    <a href="/statuspermintaan/<?php echo Auth::user()->id?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Status Permintaan</a>
+                                </li>
                                 @else
                                 <li>
                                     <a href="/<?php echo Auth::user()->role?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
