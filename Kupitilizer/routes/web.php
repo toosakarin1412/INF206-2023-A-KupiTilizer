@@ -8,6 +8,7 @@ use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KurirController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,6 +66,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/product', [ProductController::class, 'index']);
         Route::get('/admin/coupon', [CouponController::class, 'index']);
         Route::get('/admin/manageuser', [UserController::class, 'manageUser']);
+        Route::get('/admin/managekurir', [KurirController::class, 'manageKurir']);
+
         Route::get('/admin/addadmin', [AdminController::class, 'addadmin']); // menambahkan rute baru ke AdminController
 
     });
@@ -81,8 +84,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/product', [ProductController::class, 'index']);
         Route::get('/manager/coupon', [CouponController::class, 'index']);
         Route::get('/manager/manageadmin', [AdminController::class, 'manageAdmin']);
-
         Route::get('/manager/manageuser', [UserController::class, 'manageUser']);
+        Route::get('/manager/managekurir', [KurirController::class, 'manageKurir']);
+
         Route::post('/manager/manageuser', [UserController::class, 'add'])->name('user.add');
         Route::delete('/manager/manageuser/delete/{email}', [UserController::class, 'destroy'])->name('user.destroy');
         Route::get('/manager/manageuser/edit/{email}', [UserController::class, 'show']);
@@ -99,7 +103,10 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['user-access:user'])->group(function () {
         Route::get('/user', [UserController::class, 'userHome']);
         Route::get('/statuspermintaan/{id}', [UserController::class, 'userRequest']);
+    });
 
+    Route::middleware(['user-access:kurir'])->group(function () {
+        Route::get('/kurir', [KurirController::class, 'dashboard']);
     });
 });
 

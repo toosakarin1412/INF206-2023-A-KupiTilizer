@@ -34,7 +34,16 @@ class DatabaseSeeder extends Seeder
             'role' => 'manager',
         ]);
 
-        
+        User::create([
+            'name' => 'kurir',
+            'email' => 'kurir@example.com',
+            'password' => bcrypt('kurirkurir'),
+            'role' => 'kurir',
+        ]);
+
+        $this->call([
+            RequestJemputSeeder::class
+        ]);
     
     }
 }
