@@ -21,9 +21,9 @@ class UserController extends Controller
         return view('home');
     }
 
-    public function userRequest($id)
+    public function userRequest()
     {
-        $data = $data = DB::table('request_jemputs')->where('user_id', $id)->get();
+        $data = $data = DB::table('request_jemputs')->where('user_id', Auth::user()->id)->get();
         return view('statusPermintaanUser', ['dataRequest' => $data]);
     }
 
@@ -60,6 +60,7 @@ class UserController extends Controller
 
         //melakukan create user
         $user = User::create([
+            'id' => uniqid(),
             'name' => $request->name,
             'email' => $request->email,
             'role' => 'user',
@@ -138,7 +139,13 @@ class UserController extends Controller
             ]);        
         
         //kembali ke laman manage user dengan alert succes
-        return redirect()->back()->with('success', 'Data user berhasil diedit!');
+        if(Auth::user()->role == "manager"){
+            return redirect('manager/manageuser')->with('success', 'Data user berhasil diedit!');
+        }else{
+            return redirect('admin/manageuser')->with('success', 'Data user berhasil diedit!');
+
+        }
+        
     }
 
 }

@@ -15,7 +15,6 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
-
 class AdminController extends Controller
 {
     /**
@@ -49,6 +48,7 @@ class AdminController extends Controller
     ]);
 
         $user = User::create([
+            'id' => uniqid(),
             'name' => $request->name,
             'email' => $request->email,
             'role' => 'admin',
@@ -109,7 +109,8 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            ]);        
-        return redirect()->back()->with('success', 'Data Admin berhasil diedit!');
+            ]);
+        
+        return redirect('manager/manageadmin')->with('success', 'Data Admin berhasil diedit!');
     }
 }
