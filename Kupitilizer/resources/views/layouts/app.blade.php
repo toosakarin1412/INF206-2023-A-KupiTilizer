@@ -48,15 +48,16 @@
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">
                         <div class="px-4 py-3">
                             <span class="block text-sm text-gray-900">{{Auth::user()->name}}</span>
+                            <span class="block text-xs  text-gray-500 truncate">{{Auth::user()->id}}</span>
                             <span class="block text-sm  text-gray-500 truncate">{{Auth::user()->email}}</span>
                         </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
                                 @if(Auth::user()->role == "user")
                                 <li>
-                                    <a href="/profile/<?php echo Auth::user()->id?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                                    <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
                                 </li>
                                 <li>
-                                    <a href="/statuspermintaan/<?php echo Auth::user()->id?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Status Permintaan</a>
+                                    <a href="/statuspermintaan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Status Permintaan</a>
                                 </li>
                                 @else
                                 <li>
