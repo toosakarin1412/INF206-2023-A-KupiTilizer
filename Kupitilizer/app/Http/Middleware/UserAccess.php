@@ -27,6 +27,6 @@ class UserAccess
         }
           
         // return response()->json(['You do not have permission to access for this page.']);
-        return redirect()->back();
+        return redirect()->back()->with('failed', 'Anda tidak memiliki akses ke halaman ini');
     }
 }
