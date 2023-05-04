@@ -30,6 +30,11 @@ Route::get('/aboutus', function(){
     return view('aboutus');
 })->name('aboutus');
 
+Route::get('/statuspembelian', function(){
+    return view('statuspembelian');
+})->name('statuspembelian');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -131,7 +136,10 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['user-access:user'])->group(function () {
         Route::get('/user', [UserController::class, 'userHome']);
         Route::get('/statuspermintaan', [UserController::class, 'userRequest']);
+        
     });
+
+
 
     Route::middleware(['user-access:kurir'])->group(function () {
         Route::get('/kurir', [KurirController::class, 'dashboard']);
