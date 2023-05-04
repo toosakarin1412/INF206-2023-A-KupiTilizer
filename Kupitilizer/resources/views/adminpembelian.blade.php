@@ -48,10 +48,10 @@
                 
                 <tr class="bg-white hover:bg-gray-50 rounded-xl">
                     <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                        123321221321
+                        
                     </th>
                     <td class="px-6 py-4">
-                        User
+                        
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center">
