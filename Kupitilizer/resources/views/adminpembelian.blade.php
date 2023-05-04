@@ -57,10 +57,10 @@
                         <div class="flex items-center">
                            
                             <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div>
+                            waiting 
+                            <!-- <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
                             
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
-                            
-                            <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div>
+                            <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div> -->
                             
                             <span class="capitalize"></span>
                         </div>
