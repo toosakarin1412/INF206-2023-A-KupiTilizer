@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::create([
+            'id' => uniqid(),
             'name' => 'admin',
             'email' => 'admin@example.com',
             'password' => bcrypt('adminadmin'),
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
         
         User::create([
+            'id' => uniqid(),
             'name' => 'user',
             'email' => 'user@example.com',
             'password' => bcrypt('useruser'),
@@ -28,6 +30,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
+            'id' => uniqid(),
             'name' => 'manager',
             'email' => 'manager@example.com',
             'password' => bcrypt('managermanager'),
@@ -35,6 +38,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
+            'id' => uniqid(),
             'name' => 'kurir',
             'email' => 'kurir@example.com',
             'password' => bcrypt('kurirkurir'),
