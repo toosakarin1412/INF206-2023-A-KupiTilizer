@@ -67,7 +67,7 @@ class UserController extends Controller
         ]);
 
         ///kembali ke laman manage user dengan alert succes
-        return redirect('manager/manageuser')->with('success', 'User berhasil ditambahkan');
+        return redirect()->back()->with('success', 'User berhasil ditambahkan');    
     }
     
     /**
@@ -84,7 +84,8 @@ class UserController extends Controller
         DB::table('users')->where('email', $email)->delete();
         
         ///kembali ke laman manage user dengan alert succes
-        return redirect('manager/manageuser')->with('success', 'User berhasil dihapus');
+        return redirect()->back()->with('success', 'User berhasil dihapus');
+        
     }
 
     /**
@@ -137,7 +138,7 @@ class UserController extends Controller
             ]);        
         
         //kembali ke laman manage user dengan alert succes
-        return redirect('manager/manageuser')->with('success', 'Data user berhasil diedit!');
+        return redirect()->back()->with('success', 'Data user berhasil diedit!');
     }
 
 }

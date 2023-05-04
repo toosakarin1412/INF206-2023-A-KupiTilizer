@@ -57,7 +57,7 @@ class AdminController extends Controller
 
     event(new Registered($user));
 
-    return redirect()->route('manager.manageadmin');
+    return redirect()->back()->with('success', 'Admin berhasil ditambahkan');
 }
 
     /**
@@ -69,7 +69,7 @@ class AdminController extends Controller
     public function destroy($email): RedirectResponse
     {
         DB::table('users')->where('email', $email)->delete();
-        return redirect('manager/manageadmin')->with('success', 'Admin berhasil dihapus');
+        return redirect()->back()->with('success', 'Admin berhasil dihapus');
     }
 
     /**
@@ -110,6 +110,6 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             ]);        
-        return redirect('manager/manageadmin')->with('success', 'Data Admin berhasil diedit!');
+        return redirect()->back()->with('success', 'Data Admin berhasil diedit!');
     }
 }
