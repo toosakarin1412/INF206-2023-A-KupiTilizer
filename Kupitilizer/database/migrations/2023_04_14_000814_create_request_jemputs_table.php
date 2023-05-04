@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('request_jemputs', function (Blueprint $table) {
             $table->string('id')->unique();
-            $table->string('user_id');
+            $table->char('user_id', 13);
             $table->string('name');
             $table->string('no_hp');
             $table->string('alamat');

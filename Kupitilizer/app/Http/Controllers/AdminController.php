@@ -15,7 +15,6 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
-
 class AdminController extends Controller
 {
     /**
@@ -49,6 +48,7 @@ class AdminController extends Controller
     ]);
 
         $user = User::create([
+            'id' => uniqid(),
             'name' => $request->name,
             'email' => $request->email,
             'role' => 'admin',
@@ -57,7 +57,7 @@ class AdminController extends Controller
 
     event(new Registered($user));
 
-    return redirect()->route('manager.manageadmin');
+    return redirect()->back()->with('success', 'Admin berhasil ditambahkan');
 }
 
     /**
@@ -69,7 +69,7 @@ class AdminController extends Controller
     public function destroy($email): RedirectResponse
     {
         DB::table('users')->where('email', $email)->delete();
-        return redirect('manager/manageadmin')->with('success', 'Admin berhasil dihapus');
+        return redirect()->back()->with('success', 'Admin berhasil dihapus');
     }
 
     /**
@@ -109,7 +109,8 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            ]);        
+            ]);
+        
         return redirect('manager/manageadmin')->with('success', 'Data Admin berhasil diedit!');
     }
 }
