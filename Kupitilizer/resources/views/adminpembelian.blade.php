@@ -51,7 +51,7 @@
                         123321221321
                     </th>
                     <td class="px-6 py-4">
-                        
+                        User
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center">
