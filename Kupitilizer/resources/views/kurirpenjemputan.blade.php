@@ -58,7 +58,7 @@
                             @if($item->status == "waiting" || $item->status == "process")
                             <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div>
                             @else
-                            <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div>
+                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
                             @endif
                             <span class="capitalize">{{$item->status}}</span>
                         </div>

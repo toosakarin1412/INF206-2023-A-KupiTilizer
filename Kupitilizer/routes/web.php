@@ -65,7 +65,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/requestjemput', [RequestJemputController::class, 'index']);
         Route::get('/admin/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
         Route::get('/admin/requestjemput/accept/{id}', [RequestJemputController::class, 'acceptRequest']);
-        Route::get('/admin/requestjemput/decline/{id}', [RequestJemputController::class, 'declineRequest']);
+        Route::get('/admin/requestjemput/done/{id}', [RequestJemputController::class, 'doneRequest']);
 
         // Pembelian
         Route::get('/admin/pembelian', [PembelianController::class, 'index']);
@@ -97,7 +97,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/requestjemput', [RequestJemputController::class, 'index']);
         Route::get('/manager/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
         Route::get('/manager/requestjemput/accept/{id}', [RequestJemputController::class, 'acceptRequest']);
-        Route::get('/manager/requestjemput/decline/{id}', [RequestJemputController::class, 'declineRequest']);
+        Route::get('/manager/requestjemput/done/{id}', [RequestJemputController::class, 'doneRequest']);
 
         // Pembelian
         Route::get('/manager/pembelian', [PembelianController::class, 'index']);
