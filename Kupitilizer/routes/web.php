@@ -109,11 +109,11 @@ Route::middleware('auth')->group(function () {
 
         // Product
         Route::get('/manager/product', [ProductController::class, 'index']);
-        Route::get('/manager/product/manageproduct', [ProductController::class, 'manageProduct']);
-        Route::post('/manager/product/addproduct', [ProductController::class, 'addProduct']);
-        Route::delete('/manager/product/deleteproduct/{id}', [ProductController::class, 'destroy']);
-        Route::get('/manager/product/editproduct/{id}', [ProductController::class, 'show']);
-        Route::patch('/manager/product/updateproduct/{id}', [ProductController::class, 'update']);
+        // Route::get('/manager/product/manageproduct', [ProductController::class, 'manageProduct']);
+        // Route::post('/manager/product/addproduct', [ProductController::class, 'addProduct']);
+        // Route::delete('/manager/product/deleteproduct/{id}', [ProductController::class, 'destroy']);
+        // Route::get('/manager/product/editproduct/{id}', [ProductController::class, 'show']);
+        // Route::patch('/manager/product/updateproduct/{id}', [ProductController::class, 'update']);
 
         // Coupon
         Route::get('/manager/coupon', [CouponController::class, 'index']);
