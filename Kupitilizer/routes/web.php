@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/coupon', [CouponController::class, 'index']);
         Route::post('/admin/coupon', [CouponController::class, 'addCoupon']);
         Route::delete('/admin/coupon/{id}', [CouponController::class, 'delete']);
+        Route::get('/admin/coupon/edit/{id}', [CouponController::class, 'show']);
+        Route::patch('/admin/coupon/update/{id}', [CouponController::class, 'update']);         
 
         Route::get('/admin/manageuser', [UserController::class, 'manageUser']);
         Route::get('/admin/addadmin', [AdminController::class, 'addadmin']); // menambahkan rute baru ke AdminController
@@ -84,6 +86,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/pembelian', [PembelianController::class, 'index']);
         Route::get('/manager/product', [ProductController::class, 'index']);
         Route::get('/manager/coupon', [CouponController::class, 'index']);
+        Route::post('/manager/coupon', [CouponController::class, 'addCoupon']);
+        Route::delete('/manager/coupon/{id}', [CouponController::class, 'delete']);
+        Route::get('/manager/coupon/edit/{id}', [CouponController::class, 'show']); 
+        Route::patch('/manager/coupon/update/{id}', [CouponController::class, 'update']); 
+
         Route::get('/manager/manageadmin', [AdminController::class, 'manageAdmin']);
 
         Route::get('/manager/manageuser', [UserController::class, 'manageUser']);

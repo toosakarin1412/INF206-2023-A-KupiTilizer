@@ -44,7 +44,7 @@ class CouponController extends Controller
             //'gambar_coupon' => $request->gambar_coupon
     ]);
 
-    return redirect('admin/coupon')->with('success', 'Coupon berhasil ditambahkan');
+    return redirect('admin/coupon')->with('success', 'Coupon berhasil ditambahkan!');
     }
 
     public function delete($id): RedirectResponse
@@ -54,6 +54,43 @@ class CouponController extends Controller
         DB::table('coupons')->where('id', $id)->delete();
         
         ///kembali ke laman manage coupon dengan alert succes
-        return redirect('admin/coupon')->with('success', 'Coupon berhasil dihapus');
+        return redirect('admin/coupon')->with('success', 'Coupon berhasil dihapus!');
     }
+
+    /**
+     * Menampilkan halaman edit coupon
+     *
+     * @param  string $id
+     * @return \Illuminate\View\View
+     */
+    public function show($id): View
+    {   $coupons=DB::table('coupons')->where('id', $id)->get();
+        return view('editcoupon',['coupons'=>$coupons]);
+    }
+
+    public function update(Request $request, $id): RedirectResponse
+    {   
+
+        //aturan untuk inputan data
+        $rules = [
+            'nama_coupon' => ['required', 'string', 'max:255'],
+            'poin' => ['required', 'integer'],
+            'deskripsi' => ['string', 'required']
+        ];
+
+        //validasi inputan dengan rules
+        $request->validate($rules);
+
+        //melakukan update data
+        DB::table('coupons')->where('id', $id)
+            ->update([
+            'nama_coupon' => $request->nama_coupon,
+            'poin' => $request->poin,
+            'deskripsi' => $request->deskripsi,
+            ]);        
+        
+        //kembali ke laman coupon dengan alert succes
+        return redirect('/admin/coupon')->with('success', 'Data coupon berhasil diedit!');
+    }
+
 };

@@ -57,10 +57,21 @@
         <p class = "my-1 text-center relative overflow-x-auto sm:rounded-lg text-gray-700 border border-gray-200 bg-gray-50">{{ $item-> deskripsi }}</p> 
         
         
-        <div class=" flex justify-end">
+        <div class=" flex justify-end mr-3">
             
+            <!-- Edit button -->
+            <form action="coupon/edit/{{$item->id}}" method="get" class='d-inline'>
+                @method('get')
+                @csrf
+                <button type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7justify-self-end">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                    </svg>
+                </button>
+            </form>
+
              <!-- Delete Button -->
-            <form action="/admin/coupon/{{ $item->id }}" method="post">
+            <form action="coupon/{{ $item->id }}" method="post">
                 @method('delete')
                 @csrf
                 <button type="submit" onclick="return confirm('Apakah anda yakin menghapus coupon ini?')">
@@ -69,11 +80,8 @@
                     </svg>
                 </button>
             </form>
-
-            <!-- Edit Button -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7justify-self-end">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-            </svg>
+        
+            
         </div> 
     </div>
     @endforeach
@@ -95,7 +103,7 @@
                 <!-- Judul Modal -->
                 <h3 class="mb-4 text-xl text-center font-medium text-gray-900 dark:text-white">Tambahkan Kupon</h3>
                 <!-- Form add coupon -->
-                <form class="space-y-6" method="POST" action="/admin/coupon">
+                <form class="space-y-6" method="POST" action="coupon">
                     @csrf
                     <div>
                         <!-- Nama Kupon-->
