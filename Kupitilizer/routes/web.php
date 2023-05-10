@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequestJemputController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
@@ -72,6 +72,9 @@ Route::middleware('auth')->group(function () {
 
         // Product
         Route::get('/admin/product', [ProductController::class, 'index']);
+        Route::get('/admin/product/manageproduct', [ProductController::class, 'manageProduct']);
+        Route::get('/admin/product/addproduct', [ProductController::class, 'addProduct']);
+
 
         // Coupon
         Route::get('/admin/coupon', [CouponController::class, 'index']);
@@ -103,7 +106,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/pembelian', [PembelianController::class, 'index']);
 
         // Product
-        Route::get('/manager/product', [ProductController::class, 'index']);
+        //Route::get('/manager/product', [ProductController::class, 'index']);
 
         // Coupon
         Route::get('/manager/coupon', [CouponController::class, 'index']);
