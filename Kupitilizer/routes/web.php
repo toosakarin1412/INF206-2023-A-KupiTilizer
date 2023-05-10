@@ -139,10 +139,14 @@ Route::middleware('auth')->group(function () {
         
     });
 
-
-
     Route::middleware(['user-access:kurir'])->group(function () {
         Route::get('/kurir', [KurirController::class, 'dashboard']);
+
+        // Request Jemput
+        Route::get('/kurir/requestjemput', [KurirController::class, 'requestJemput']);
+        Route::get('/kurir/requestjemput/detail/{id}', [KurirController::class, 'detail']);
+        Route::get('/kurir/requestjemput/accept/{id}', [KurirController::class, 'acceptRequest']);
+        Route::get('/kurir/requestjemput/cancel/{id}', [KurirController::class, 'cancelRequest']);
     });
 });
 
