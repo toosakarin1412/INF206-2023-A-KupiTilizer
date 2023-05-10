@@ -73,7 +73,9 @@ Route::middleware('auth')->group(function () {
         // Product
         Route::get('/admin/product', [ProductController::class, 'index']);
         Route::get('/admin/product/manageproduct', [ProductController::class, 'manageProduct']);
-        Route::get('/admin/product/addproduct', [ProductController::class, 'addProduct']);
+        Route::post('/admin/product/addproduct', [ProductController::class, 'addProduct']);
+        Route::delete('/admin/product/deleteproduct/{id}', [ProductController::class, 'destroy']);
+
 
 
         // Coupon
@@ -108,8 +110,10 @@ Route::middleware('auth')->group(function () {
         // Product
         Route::get('/manager/product', [ProductController::class, 'index']);
         Route::get('/manager/product/manageproduct', [ProductController::class, 'manageProduct']);
-        Route::get('/manager/product/addproduct', [ProductController::class, 'addProduct']);
-        
+        Route::post('/manager/product/addproduct', [ProductController::class, 'addProduct']);
+        Route::delete('/manager/product/deleteproduct/{id}', [ProductController::class, 'destroy']);
+
+
         // Coupon
         Route::get('/manager/coupon', [CouponController::class, 'index']);
 

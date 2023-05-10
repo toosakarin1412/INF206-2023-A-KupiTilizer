@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
+use \Carbon\Carbon;
 use Illuminate\View\View;
 
 
@@ -29,8 +30,8 @@ class ProductController extends Controller
 
     public function addProduct(Request $request): RedirectResponse
     {
+        $date = Carbon::now();
         $request->validate([
-            'id' => ['required', 'string', 'max:255'],
             'nama_product'=> ['required', 'string'],
             'harga' => ['required', 'integer'],
             'deskripsi' => ['nullable', 'string'],
@@ -45,5 +46,15 @@ class ProductController extends Controller
             //'foto_product' => $request->foto_product,
         ]);
         return redirect()->back()->with('success', 'Product berhasil ditambahkan');
+    } 
+
+    public function destroy($id): RedirectResponse
+    {
+        //menghapus product dari database 
+        DB::table('products')->where('id', $id)->delete();
+        
+        ///kembali ke laman manage user dengan alert succes
+        return redirect()->back()->with('success', 'Product berhasil dihapus');
+        
     }
 }
