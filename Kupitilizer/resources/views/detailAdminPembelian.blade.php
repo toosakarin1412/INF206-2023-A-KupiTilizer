@@ -25,7 +25,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 text-gray-700 border border-gray-200 bg-gray-50">
     <div class="grid gap-5 grid-cols-1 md:grid-cols-2">
         <div>
-            <label for="helper-text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Penjemputan</label>
+            <label for="helper-text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Pembelian</label>
             <input type="text" id="disabled-input" aria-label="disabled input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $data->id }}" disabled readonly>
         </div>
         <div>
