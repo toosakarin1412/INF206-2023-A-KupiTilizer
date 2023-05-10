@@ -126,7 +126,7 @@
             <div class="px-6 py-6 lg:px-8">
                 <!-- Judul Modal -->
                 <h3 class="mb-4 text-xl text-center font-medium text-gray-900 dark:text-white">Tambahkan Kupon</h3>
-                <!-- Form add coupob -->
+                <!-- Form add coupon -->
                 <form class="space-y-6" method="POST" action="/admin/coupon">
                     @csrf
                     <div>

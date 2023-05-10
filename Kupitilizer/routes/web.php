@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/pembelian', [PembelianController::class, 'index']);
         Route::get('/admin/product', [ProductController::class, 'index']);
         Route::get('/admin/coupon', [CouponController::class, 'index']);
+        Route::post('/admin/coupon', [CouponController::class, 'addCoupon']);
         Route::get('/admin/manageuser', [UserController::class, 'manageUser']);
         Route::get('/admin/addadmin', [AdminController::class, 'addadmin']); // menambahkan rute baru ke AdminController
 

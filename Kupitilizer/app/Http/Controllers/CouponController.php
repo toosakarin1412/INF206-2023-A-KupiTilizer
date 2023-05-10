@@ -6,13 +6,10 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Coupon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Validation\Rules;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use \Carbon\Carbon;
 
 class CouponController extends Controller
 {
@@ -30,7 +27,6 @@ class CouponController extends Controller
     public function addCoupon(Request $request): RedirectResponse
     {
         $request->validate([
-            'id'=>['required', 'string', 'max:255'],
             'nama_coupon' => ['required', 'string', 'max:255'],
             'poin' => ['required', 'integer'],
             'deskripsi' => ['string', 'required']
@@ -38,15 +34,16 @@ class CouponController extends Controller
             // 'gambar_coupon' => ['string', 'nullable']
     ]);
 
+        $date = Carbon::now();
         $Coupon = Coupon::create([
-            'id'=>uniqid(),
+            'id'=>(string)$date->format('ymd').bin2hex(random_bytes(3)),
             'nama_coupon' => $request->nama_coupon,
             'poin' => $request->poin,
-            'deskripsi' => $request->deskripsi
+            'deskripsi' => $request->deskripsi,
             //'masa_berlaku' => $request->masa_berlaku,
             //'gambar_coupon' => $request->gambar_coupon
     ]);
 
-    return redirect('admin/managecoupon')->with('success', 'Coupon berhasil ditambahkan');
+    return redirect('admin/coupon')->with('success', 'Coupon berhasil ditambahkan');
     }
 };
