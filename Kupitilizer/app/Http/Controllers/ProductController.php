@@ -24,8 +24,8 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        $products = Product::all();
-        return view('adminproduct',['products'=>$products]);
+        $product = Product::all();
+        return view('adminproduct',['products'=>$product]);
     }
 
     public function addProduct(Request $request): RedirectResponse
@@ -39,7 +39,7 @@ class ProductController extends Controller
         ]);
 
         $product = Product::create([
-            'id' => (string)$date->format('ymd').bin2hex(random_bytes(2)),
+            'id' => (int)$date->format('ymd') * 1000000 + rand(1, 999999),
             'nama_product' => $request->nama_product,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi,
@@ -57,4 +57,33 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product berhasil dihapus');
         
     }
+
+    public function show($id): View
+    {   
+        $product=DB::table('products')->where('id', $id)->get();
+        return view('editproduct',['products'=>$product]);
+    }
+    
+    public function update(Request $request, $id): RedirectResponse{
+        DB::table('products')->where('id', $id)
+        ->update([
+            'nama_product' => $request-> nama_product,
+            'harga' => $request->  harga,
+            'deskripsi' => $request-> deskripsi,
+
+
+        //TO BE ADDED, PRODUCT PICTURE
+            // simpan gambar ke dalam server
+    // if ($request->hasFile('foto_product')) {
+    //     $filename = $request->foto_product->getClientOriginalName();
+    //     $path = $request->foto_product->storeAs('public/images', $filename);
+    //     $product->foto_product = $filename;
+    // }
+
+    // $product->save();
+
+        ]);
+        return redirect ('admin/product')->with('success', 'Data Product berhasil diedit!');
+    }
+
 }
