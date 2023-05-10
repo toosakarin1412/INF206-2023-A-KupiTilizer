@@ -106,8 +106,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/pembelian', [PembelianController::class, 'index']);
 
         // Product
-        //Route::get('/manager/product', [ProductController::class, 'index']);
-
+        Route::get('/manager/product', [ProductController::class, 'index']);
+        Route::get('/manager/product/manageproduct', [ProductController::class, 'manageProduct']);
+        Route::get('/manager/product/addproduct', [ProductController::class, 'addProduct']);
+        
         // Coupon
         Route::get('/manager/coupon', [CouponController::class, 'index']);
 
