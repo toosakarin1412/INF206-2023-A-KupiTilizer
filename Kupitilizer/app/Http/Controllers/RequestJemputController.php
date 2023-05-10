@@ -29,7 +29,7 @@ class RequestJemputController extends Controller
         // dd(Auth::user()->name);
         // dd($date->format('Ymd').Auth::user()->id.$date->format('his'));
         Requestjemput::create([
-            'id' => $date->format('Ymd').Auth::user()->id.$date->format('his'),
+            'id' => (string)$date->format('ymd').bin2hex(random_bytes(5)),
             'user_id' => Auth::user()->id,
             'name' => Auth::user()->name,
             'no_hp' => $request->hp,
@@ -67,10 +67,10 @@ class RequestJemputController extends Controller
     /**
      * 
      */
-    public function declineRequest($id)
+    public function doneRequest($id)
     {
         DB::table('request_jemputs')->where('id', $id)->update([
-            'status' => 'decline'
+            'status' => 'done'
         ]);
         return redirect()->back();
     }

@@ -16,9 +16,9 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function show($id)
+    public function show()
     {
-        $data = $data = DB::table('request_jemputs')->where('user_id', $id)->get();
+        $data = DB::table('request_jemputs')->where('user_id', Auth::user()->id)->get();
         return view('profile', ['dataRequest' => $data]);
     }
 

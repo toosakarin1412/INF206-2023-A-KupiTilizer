@@ -13,35 +13,64 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-
-class UserController extends Controller
+class KurirController extends Controller
 {
-    public function userHome()
-    {
-        return view('home');
+    public function dashboard(){
+        return view('dashboardKurir');
     }
 
-    public function userRequest()
+    public function manageKurir(){
+        $kurir = DB::table('users')->where('role', 'kurir')->get();
+        return view('manageKurir', ['kurir' => $kurir]);
+    }
+
+    public function requestJemput(){
+        $data = DB::table('request_jemputs')->get(['id', 'name', 'status']);
+        // dd($data);
+        return view('kurirpenjemputan', ['dataRequest' => $data]);
+    }
+
+    public function detail($id)
     {
-        $data = $data = DB::table('request_jemputs')->where('user_id', Auth::user()->id)->get();
-        return view('statusPermintaanUser', ['dataRequest' => $data]);
+        $data = DB::table('request_jemputs')->where('id', $id)->get();
+
+        return view('detailRequestPenjemputanKurir', ['data' => $data[0]]);
+    }
+
+        /**
+     * 
+     */
+    public function acceptRequest($id)
+    {
+        DB::table('request_jemputs')->where('id', $id)->update([
+            'status' => 'process',
+            'kurir_id' => Auth::user()->id
+        ]);
+        return redirect()->back();
     }
 
     /**
-     * Mengambil data dari db
-     * @return view('manageuser',['users'=>$users])
      * 
      */
-    public function manageUser(): View
-    {   
-
-        //mengambil data dari database dimana rolenya user
-        $users=DB::table('users')->where('role', 'user')->get();
-
-        ///kembali ke laman manage user dengan memberikan data yg telah diambil
-        return view('manageuser',['users'=>$users]);
+    public function declineRequest($id)
+    {
+        DB::table('request_jemputs')->where('id', $id)->update([
+            'status' => 'decline'
+        ]);
+        return redirect()->back();
     }
-    
+
+        /**
+     * 
+     */
+    public function cancelRequest($id)
+    {
+        DB::table('request_jemputs')->where('id', $id)->update([
+            'status' => 'waiting'
+        ]);
+        return redirect()->back();
+    }
+
     /**
      * 
      * Menambahkan akun user
@@ -63,12 +92,12 @@ class UserController extends Controller
             'id' => uniqid(),
             'name' => $request->name,
             'email' => $request->email,
-            'role' => 'user',
+            'role' => 'kurir',
             'password' => Hash::make($request->password),
         ]);
 
         ///kembali ke laman manage user dengan alert succes
-        return redirect()->back()->with('success', 'User berhasil ditambahkan');    
+        return redirect()->back()->with('success', 'User berhasil ditambahkan');
     }
     
     /**
@@ -86,7 +115,6 @@ class UserController extends Controller
         
         ///kembali ke laman manage user dengan alert succes
         return redirect()->back()->with('success', 'User berhasil dihapus');
-        
     }
 
     /**
@@ -96,14 +124,14 @@ class UserController extends Controller
      * @return return view('edituser',['user'=>$user])
      * 
      */
-    public function show($email): View
+    public function show($email)
     {   
 
         //mengambil data dari database dimana emailnya sesuai dengan parameter
         $user=DB::table('users')->where('email', $email)->get();
 
         //return ke edituser untuk menampilkan laman edit data
-        return view('edituser',['user'=>$user]);
+        return view('editkurir',['user'=>$user]);
     }
 
     /**
@@ -137,15 +165,11 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             ]);        
-        
-        //kembali ke laman manage user dengan alert succes
+
         if(Auth::user()->role == "manager"){
-            return redirect('manager/manageuser')->with('success', 'Data user berhasil diedit!');
+            return redirect('manager/managekurir')->with('success', 'Data kurir berhasil diedit!');
         }else{
-            return redirect('admin/manageuser')->with('success', 'Data user berhasil diedit!');
-
+            return redirect('admin/managekurir')->with('success', 'Data kurir berhasil diedit!');
         }
-        
     }
-
 }

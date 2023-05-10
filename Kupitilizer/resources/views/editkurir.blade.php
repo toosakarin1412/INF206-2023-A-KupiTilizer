@@ -25,7 +25,7 @@
 @section('content')
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:p-4 text-gray-700 border border-gray-200 bg-gray-50">
     @foreach ($user as $item)
-    <form method="post" action="/<?php echo Auth::user()->role?>/manageuser/update/{{$item->email}}" class="mb-5">
+    <form method="post" action="/<?php echo Auth::user()->role?>/managekurir/update/{{$item->email}}" class="mb-5">
         @method('patch')
         @csrf
         <div class="px-6 py-4 w-full md-:w-1/2 ">
