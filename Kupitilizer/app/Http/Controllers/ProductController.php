@@ -44,7 +44,6 @@ class ProductController extends Controller
             'deskripsi' => $request->deskripsi,
             //'foto_product' => $request->foto_product,
         ]);
-        event(new Registered($product));
         return redirect()->back()->with('success', 'Product berhasil ditambahkan');
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('id')->unique();
             $table->string('nama_product');
             $table->integer('harga')->default(0);
-            $table->string('deksripsi'); 
+            $table->string('deskripsi'); 
             //$table->string('foto_product')->nullable();        
             $table->timestamps();
         });
