@@ -65,7 +65,7 @@
             <label for="helper-text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu Jemput</label>
             <input type="text" id="disabled-input" aria-label="disabled input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $data->waktu_jemput }}" disabled readonly>
         </div>
-        @if($data->status == "waiting" || $data->status == "process")
+        @if($data->status == "waiting")
         <div class="flex p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-200 dark:bg-gray-800 dark:text-yellow-300" role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -74,27 +74,27 @@
                 <span class="font-bold text-md capitalize">{{ $data->status }}</span>
             </div>
         </div>
-        @else
+        @elseif($data->status == "accepted")
         <div class="flex p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-yellow-300" role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
+            <div class="ml-2">
+                <span class="font-bold text-md capitalize">{{ $data->status }}</span>
+            </div>
+        </div>
+        @else
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
             <div class="ml-2">
                 <span class="font-bold text-md capitalize">{{ $data->status }}</span>
             </div>
         </div>
         @endif
 
-        @if($data->kurir_id != NULL)
-        <div class="flex p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-yellow-300" role="alert">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-            </svg>
-            <div class="ml-2">
-                <span class="font-bold text-md capitalize">Id Kurir {{ $data->kurir_id }}</span>
-            </div>
-        </div>
-        @endif
     </div>
 </div>
+
 @endsection

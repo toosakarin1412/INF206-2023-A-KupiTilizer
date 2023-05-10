@@ -30,6 +30,11 @@ Route::get('/aboutus', function(){
     return view('aboutus');
 })->name('aboutus');
 
+Route::get('/statuspembelian', function(){
+    return view('statuspembelian');
+})->name('statuspembelian');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -60,7 +65,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/requestjemput', [RequestJemputController::class, 'index']);
         Route::get('/admin/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
         Route::get('/admin/requestjemput/accept/{id}', [RequestJemputController::class, 'acceptRequest']);
-        Route::get('/admin/requestjemput/decline/{id}', [RequestJemputController::class, 'declineRequest']);
+        Route::get('/admin/requestjemput/done/{id}', [RequestJemputController::class, 'doneRequest']);
 
         // Pembelian
         Route::get('/admin/pembelian', [PembelianController::class, 'index']);
@@ -92,7 +97,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/requestjemput', [RequestJemputController::class, 'index']);
         Route::get('/manager/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
         Route::get('/manager/requestjemput/accept/{id}', [RequestJemputController::class, 'acceptRequest']);
-        Route::get('/manager/requestjemput/decline/{id}', [RequestJemputController::class, 'declineRequest']);
+        Route::get('/manager/requestjemput/done/{id}', [RequestJemputController::class, 'doneRequest']);
 
         // Pembelian
         Route::get('/manager/pembelian', [PembelianController::class, 'index']);
@@ -131,10 +136,17 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['user-access:user'])->group(function () {
         Route::get('/user', [UserController::class, 'userHome']);
         Route::get('/statuspermintaan', [UserController::class, 'userRequest']);
+        
     });
 
     Route::middleware(['user-access:kurir'])->group(function () {
         Route::get('/kurir', [KurirController::class, 'dashboard']);
+
+        // Request Jemput
+        Route::get('/kurir/requestjemput', [KurirController::class, 'requestJemput']);
+        Route::get('/kurir/requestjemput/detail/{id}', [KurirController::class, 'detail']);
+        Route::get('/kurir/requestjemput/accept/{id}', [KurirController::class, 'acceptRequest']);
+        Route::get('/kurir/requestjemput/cancel/{id}', [KurirController::class, 'cancelRequest']);
     });
 });
 
