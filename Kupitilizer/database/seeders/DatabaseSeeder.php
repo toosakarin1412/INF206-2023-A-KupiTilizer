@@ -34,6 +34,10 @@ class DatabaseSeeder extends Seeder
             'role' => 'manager',
         ]);
 
+        $this->call([
+            RequestJemputSeeder::class,
+            CouponSeeder::class,
+        ]);
         
     
     }

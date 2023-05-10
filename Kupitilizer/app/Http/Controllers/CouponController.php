@@ -27,25 +27,25 @@ class CouponController extends Controller
         return view('admincoupon',['coupons'=>$coupons]);
     }
 
-    // public function addCoupon(Request $request): RedirectResponse
-    // {
-    //     $request->validate([
-    //         'id'=>['required', 'string', 'max:255'],
-    //         'nama_coupon' => ['required', 'string', 'max:255'],
-    //         'poin' => ['required', 'integer'],
-    //         'deskripsi' => ['string', 'required']
-    //         //'masa_berlaku' => ['string', 'required','max:255']
-    //         // 'gambar_coupon' => ['string', 'nullable']
-    // ]);
+    public function addCoupon(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'id'=>['required', 'string', 'max:255'],
+            'nama_coupon' => ['required', 'string', 'max:255'],
+            'poin' => ['required', 'integer'],
+            'deskripsi' => ['string', 'required']
+            //'masa_berlaku' => ['string', 'required','max:255']
+            // 'gambar_coupon' => ['string', 'nullable']
+    ]);
 
-    //     $Coupon = Coupon::create([
-    //         'id'=>uniqid(),
-    //         'nama_coupon' => $request->nama_coupon,
-    //         'poin' => $request->poin,
-    //         'deskripsi' => $request->deskripsi
-    //         //'masa_berlaku' => $request->masa_berlaku,
-    //         //'gambar_coupon' => $request->gambar_coupon
-    // ]);
+        $Coupon = Coupon::create([
+            'id'=>uniqid(),
+            'nama_coupon' => $request->nama_coupon,
+            'poin' => $request->poin,
+            'deskripsi' => $request->deskripsi
+            //'masa_berlaku' => $request->masa_berlaku,
+            //'gambar_coupon' => $request->gambar_coupon
+    ]);
 
     return redirect('admin/managecoupon')->with('success', 'Coupon berhasil ditambahkan');
     }
