@@ -46,4 +46,14 @@ class CouponController extends Controller
 
     return redirect('admin/coupon')->with('success', 'Coupon berhasil ditambahkan');
     }
+
+    public function delete($id): RedirectResponse
+    {
+
+        //menghapus akun dari database dimana id sesuai dengan parameter
+        DB::table('coupons')->where('id', $id)->delete();
+        
+        ///kembali ke laman manage coupon dengan alert succes
+        return redirect('admin/coupon')->with('success', 'Coupon berhasil dihapus');
+    }
 };
