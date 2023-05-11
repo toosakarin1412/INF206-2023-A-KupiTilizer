@@ -64,4 +64,19 @@ class ProfileController extends Controller
     {
         return view('usersetting');
     }
+
+    public function updateData(Request $request){
+       // dd($request);
+       DB::table('users')->where('id', Auth::user()->id)
+            ->update([
+                "name" => $request->name,
+                "jeniskelamin" => $request->jeniskelamin,
+                "hp" => $request->hp,
+                "alamat" => $request->alamat,
+                "email" => $request->email,
+                "ulang_tahun" => $request->ulang_tahun,
+            ]);
+
+        return redirect()->back()->with('success', "Update data berhasil");
+    }
 }
