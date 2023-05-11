@@ -71,6 +71,10 @@ Route::middleware('auth')->group(function () {
 
         // Pembelian
         Route::get('/admin/pembelian', [PembelianController::class, 'index']);
+        Route::get('/admin/pembelian/detail/{id}', [PembelianController::class, 'detail']);
+        Route::get('/admin/pembelian/accept/{id}', [PembelianController::class, 'acceptRequest']);
+        Route::get('/admin/pembelian/cancel/{id}', [PembelianController::class, 'cancelRequest']);
+        Route::get('/admin/pembelian/decline/{id}', [PembelianController::class, 'declineRequest']);
 
         // Product
         Route::get('/admin/product', [ProductController::class, 'index']);

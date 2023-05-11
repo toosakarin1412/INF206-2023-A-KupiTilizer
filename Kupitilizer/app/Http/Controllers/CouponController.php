@@ -56,7 +56,11 @@ class CouponController extends Controller
         DB::table('coupons')->where('id', $id)->delete();
         
         ///kembali ke laman manage coupon dengan alert succes
-        return redirect('admin/coupon')->with('success', 'Coupon berhasil dihapus!');
+        if(Auth::user()->role == "admin"){
+            return redirect('admin/coupon')->with('success', 'Coupon berhasil dihapus!');
+        }else{
+            return redirect('manager/coupon')->with('success', 'Coupon berhasil dihapus!');
+        }
     }
 
     /**
@@ -92,7 +96,11 @@ class CouponController extends Controller
             ]);        
         
         //kembali ke laman coupon dengan alert succes
-        return redirect('/admin/coupon')->with('success', 'Data coupon berhasil diedit!');
+        if(Auth::user()->role == "admin"){
+            return redirect('/admin/coupon')->with('success', 'Data coupon berhasil diedit!');
+        }else{
+            return redirect('/manager/coupon')->with('success', 'Data coupon berhasil diedit!');
+        }
     }
 
     public function halamanKupon(){
