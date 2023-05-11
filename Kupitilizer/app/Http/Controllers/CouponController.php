@@ -106,20 +106,33 @@ class CouponController extends Controller
     }
 
     public function redeem(Request $request){
-        //dd($request);
-        MyCoupon::create([
-            'user_id'=>Auth::user()->id,
-            'coupon_id' => $request->kodeCoupon
-        ]);
+
         $poinUser = DB::table('users')->where('id', Auth::user()->id)->get(['poin']);
         //dd($poinUser);
         $poinPakai = DB::table('coupons')->where('id', $request->kodeCoupon)->get(['poin']);
         // dd($poinPakai);
-        DB::table('users')->where('id', Auth::user()->id)
-            ->update([
-            'poin' => $poinUser[0]->poin - $poinPakai[0]->poin
-            ]);   
-            //dd($poinUser);
+
+        if($poinUser[0]->poin - $poinPakai[0]->poin < 0){
+            return redirect()->back()->with("failed","Coupon gagal ditukarkan, point and kurang");
+        }
+
+        DB::beginTransaction();
+        try{
+            MyCoupon::create([
+                'user_id'=>Auth::user()->id,
+                'coupon_id' => $request->kodeCoupon
+            ]);
+    
+            DB::table('users')->where('id', Auth::user()->id)
+                ->update([
+                'poin' => $poinUser[0]->poin - $poinPakai[0]->poin
+                ]);  
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+            return redirect()->back()->with("failed","Coupon gagal ditukarkan");
+        }
+
         return redirect()->back()->with("success","Coupon berhasil ditukarkan");
     }
 
