@@ -53,9 +53,10 @@ Route::middleware('auth')->group(function () {
     });
 
     // Coupon
-    Route::get('/coupon', function () {
-        return view('coupon');
-    });
+    // Route::get('/coupon', function () {
+    //     return view('coupon');
+    // });
+    Route::get('/coupon', [CouponController::class, 'index']);
 
     Route::middleware(['user-access:admin'])->group(function () {
         // Dashboard
