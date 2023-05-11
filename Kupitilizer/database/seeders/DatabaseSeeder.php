@@ -48,6 +48,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RequestJemputSeeder::class,
             ProductSeeder::class,
+            CouponSeeder::class,
         ]);
     
     }
