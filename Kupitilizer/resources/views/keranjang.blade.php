@@ -20,7 +20,7 @@
             </li>
         </ol>
     </nav>
-    <div class="mx-10 md:mx-20 py-5 grid md:grid-cols-5 grid-cols-1 gap-5">
+    <div class="mx-10 md:mx-20 py-5 grid md:grid-cols-4 grid-cols-1 gap-5">
         <div class="md:col-span-3 mb-5 p-5 w-full border border-gray rounded-xl shadow-xl">
             @foreach($keranjang as $item)
             <div class="border border-gray rounded-xl mt-2">
@@ -48,6 +48,29 @@
             </div>
             @endforeach
         </div>
-
+        <div class="w-full h-auto md:col-span-1">
+            <div class="border border-gray shadow-xl rounded-xl p-3">
+                <div class="">
+                    <p class="font-bold">Gunakan Kupon</p>
+                    <input type="text" name="kode_kupon" class="rounded-xl">
+                </div>
+                <hr class="my-3">
+                <div class="my-3">
+                    <p class="font-bold">Ringkasan Belanja</p>
+                    <div class="flex justify-between">
+                        <p>Total Harga</p>
+                        <p class="">Rp{{$totalBelanja}}</p>
+                    </div>
+                    <hr class="my-3">
+                    <div class="flex justify-between font-bold">
+                        <p>Total Harga</p>
+                        <p class="">Rp{{$totalBelanja}}</p>
+                    </div>
+                </div>
+                <div>
+                    <button class="bg-leaf hover:bg-green-900 p-3 w-full rounded-xl font-bold text-white" type="submit">Beli</button>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

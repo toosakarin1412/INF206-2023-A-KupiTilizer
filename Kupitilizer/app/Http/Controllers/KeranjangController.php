@@ -17,8 +17,12 @@ class KeranjangController extends Controller
     {
         // $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
         $keranjang = DB::table('keranjangs')->join('products', 'keranjangs.product_id', '=', 'products.id')->get();
-        // dd($keranjang);
-        return view('keranjang', ['keranjang' => $keranjang]);
+        $totalBelanja = 0;
+        foreach($keranjang as $item){
+            $totalBelanja+= ($item->jumlah * $item->harga);
+        }
+        // dd($totalBelanja);
+        return view('keranjang', ['keranjang' => $keranjang, 'totalBelanja' => $totalBelanja]);
     }
 
     /**
