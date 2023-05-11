@@ -19,7 +19,8 @@ class ProfileController extends Controller
     public function show()
     {
         $data = DB::table('request_jemputs')->where('user_id', Auth::user()->id)->get();
-        return view('profile', ['dataRequest' => $data]);
+        $beli = DB::table('pembelians')->where('user_id', Auth::user()->id)->get();
+        return view('profile', ['dataRequest' => $data, 'beli' => $beli]);
     }
 
     /**
@@ -62,5 +63,20 @@ class ProfileController extends Controller
     public function setting(): View
     {
         return view('usersetting');
+    }
+
+    public function updateData(Request $request){
+       // dd($request);
+       DB::table('users')->where('id', Auth::user()->id)
+            ->update([
+                "name" => $request->name,
+                "jeniskelamin" => $request->jeniskelamin,
+                "hp" => $request->hp,
+                "alamat" => $request->alamat,
+                "email" => $request->email,
+                "ulang_tahun" => $request->ulang_tahun,
+            ]);
+
+        return redirect()->back()->with('success', "Update data berhasil");
     }
 }

@@ -31,10 +31,6 @@ Route::get('/aboutus', function(){
     return view('aboutus');
 })->name('aboutus');
 
-Route::get('/statuspembelian', function(){
-    return view('statuspembelian');
-})->name('statuspembelian');
-
 Route::get('/market', [ProductController::class, 'market'])->name('product.market');
 Route::get('/market/product/{id}', [ProductController::class, 'detailProduct']);
 
@@ -46,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/setting', [ProfileController::class, 'setting']);
+    Route::post('/setting/update', [ProfileController::class, 'updateData']);
 
     // Request Jemput
     Route::get('/requestjemput', function () {
