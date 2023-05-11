@@ -6,6 +6,7 @@ use App\Http\Requests\StoreKeranjangRequest;
 use App\Http\Requests\UpdateKeranjangRequest;
 use App\Models\Keranjang;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class KeranjangController extends Controller
 {
@@ -14,7 +15,10 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        //
+        // $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
+        $keranjang = DB::table('keranjangs')->join('products', 'keranjangs.product_id', '=', 'products.id')->get();
+        // dd($keranjang);
+        return view('keranjang', ['keranjang' => $keranjang]);
     }
 
     /**
@@ -68,8 +72,15 @@ class KeranjangController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Keranjang $keranjang)
+    public function destroy($id)
     {
-        //
+        // dd($id);
+
+        Keranjang::where([
+            ['user_id', '=', Auth::user()->id],
+            ['product_id', '=', $id]
+            ])->delete();
+
+        return redirect()->back();
     }
 }

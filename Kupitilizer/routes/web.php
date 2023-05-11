@@ -52,7 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/requestjemput/create', [RequestJemputController::class, 'create'])->name('penjemputan.create');
 
     // Pembelian
+    Route::get('/keranjang', [KeranjangController::class, 'index']);
     Route::post('/keranjang/addkeranjang', [KeranjangController::class, 'store'])->name('keranjang.add');
+    Route::post('/keranjang/delete/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.delete');
 
     // Coupon
     Route::get('/coupon', function () {
