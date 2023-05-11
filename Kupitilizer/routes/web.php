@@ -38,6 +38,9 @@ Route::get('/statuspembelian', function(){
 Route::get('/market', [ProductController::class, 'market'])->name('product.market');
 Route::get('/market/product/{id}', [ProductController::class, 'detailProduct']);
 
+// Coupon
+Route::get('/coupon', [CouponController::class, 'halamanKupon']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.edit');
@@ -56,10 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/keranjang/addkeranjang', [KeranjangController::class, 'store'])->name('keranjang.add');
     Route::post('/keranjang/delete/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.delete');
 
-    // Coupon
-    Route::get('/coupon', function () {
-        return view('coupon');
-    });
+    Route::get('/mycoupon', [CouponController::class, 'MyCoupon']);
 
     Route::middleware(['user-access:admin'])->group(function () {
         // Dashboard
