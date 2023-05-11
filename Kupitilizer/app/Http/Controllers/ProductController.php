@@ -85,20 +85,13 @@ class ProductController extends Controller
             'nama_product' => $request-> nama_product,
             'harga' => $request->  harga,
             'deskripsi' => $request-> deskripsi,
-
-
-        //TO BE ADDED, PRODUCT PICTURE
-            // simpan gambar ke dalam server
-    // if ($request->hasFile('foto_product')) {
-    //     $filename = $request->foto_product->getClientOriginalName();
-    //     $path = $request->foto_product->storeAs('public/images', $filename);
-    //     $product->foto_product = $filename;
-    // }
-
-    // $product->save();
-
         ]);
-        return redirect ('admin/product')->with('success', 'Data Product berhasil diedit!');
+        if(Auth::user()->role == "admin"){
+            return redirect ('admin/product')->with('success', 'Data Product berhasil diedit!');
+        }else{
+            return redirect ('manager/product')->with('success', 'Data Product berhasil diedit!');            
+        }
+       
     }
 
 }

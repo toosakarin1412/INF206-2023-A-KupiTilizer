@@ -27,7 +27,7 @@ editproduct.blade.php
     
 <div class="relative overflow-x-auto shadow -md sm:rounded-lg sm:p-4 text-gray-700 border border-gray-200 bg-gray-50">
     @foreach ($products as $item)
-    <form method="post" action="/admin/product/updateproduct/{{$item->id}}" class="mb-5">
+    <form method="post" action="/<?php echo Auth::user()->role?>/product/updateproduct/{{$item->id}}" class="mb-5">
         @method('patch')
         @csrf
         <div class="sm:grid">
