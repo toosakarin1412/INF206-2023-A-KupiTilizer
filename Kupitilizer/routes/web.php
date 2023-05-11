@@ -31,10 +31,6 @@ Route::get('/aboutus', function(){
     return view('aboutus');
 })->name('aboutus');
 
-Route::get('/statuspembelian', function(){
-    return view('statuspembelian');
-})->name('statuspembelian');
-
 Route::get('/market', [ProductController::class, 'market'])->name('product.market');
 Route::get('/market/product/{id}', [ProductController::class, 'detailProduct']);
 

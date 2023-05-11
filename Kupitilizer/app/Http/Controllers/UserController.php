@@ -24,7 +24,8 @@ class UserController extends Controller
     public function userRequest()
     {
         $data = $data = DB::table('request_jemputs')->where('user_id', Auth::user()->id)->get();
-        return view('statusPermintaanUser', ['dataRequest' => $data]);
+        $beli = DB::table('pembelians')->where('user_id', Auth::user()->id)->get();
+        return view('statusPermintaanUser', ['dataRequest' => $data, 'beli' => $beli]);
     }
 
     /**
