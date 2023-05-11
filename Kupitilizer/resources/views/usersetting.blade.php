@@ -21,7 +21,9 @@
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Nomor HP</div>
-                <div class="px-4 py-2">-</div>
+                <<div class="px-4 py-2">
+        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="">
+    </div>
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Alamat</div>
