@@ -9,5 +9,6 @@
     <div>Nama</div>
     <div>Nomor HP</div>
     <div>Email</div>
+    <div>Jenis Kelamin</div>
     </div>
 @endsection
