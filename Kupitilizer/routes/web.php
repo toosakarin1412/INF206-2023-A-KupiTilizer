@@ -60,6 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/keranjang/delete/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.delete');
 
     Route::get('/mycoupon', [CouponController::class, 'MyCoupon']);
+    Route::post('/coupon/add', [CouponController::class, 'redeem']);
 
     Route::middleware(['user-access:admin'])->group(function () {
         // Dashboard
