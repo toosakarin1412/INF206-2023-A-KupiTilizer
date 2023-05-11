@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
+use \Carbon\Carbon;
 use Illuminate\View\View;
 
 
@@ -23,14 +24,14 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        $products = Product::all();
-        return view('adminproduct',['products'=>$products]);
+        $product = Product::all();
+        return view('adminproduct',['products'=>$product]);
     }
 
     public function addProduct(Request $request): RedirectResponse
     {
+        $date = Carbon::now();
         $request->validate([
-            'id' => ['required', 'string', 'max:255'],
             'nama_product'=> ['required', 'string'],
             'harga' => ['required', 'integer'],
             'deskripsi' => ['nullable', 'string'],
@@ -45,5 +46,44 @@ class ProductController extends Controller
             //'foto_product' => $request->foto_product,
         ]);
         return redirect()->back()->with('success', 'Product berhasil ditambahkan');
+    } 
+
+    public function destroy($id): RedirectResponse
+    {
+        //menghapus product dari database 
+        DB::table('products')->where('id', $id)->delete();
+        
+        ///kembali ke laman manage user dengan alert succes
+        return redirect()->back()->with('success', 'Product berhasil dihapus');
+        
     }
+
+    public function show($id): View
+    {   
+        $product=DB::table('products')->where('id', $id)->get();
+        return view('editproduct',['products'=>$product]);
+    }
+    
+    public function update(Request $request, $id): RedirectResponse{
+        DB::table('products')->where('id', $id)
+        ->update([
+            'nama_product' => $request-> nama_product,
+            'harga' => $request->  harga,
+            'deskripsi' => $request-> deskripsi,
+
+
+        //TO BE ADDED, PRODUCT PICTURE
+            // simpan gambar ke dalam server
+    // if ($request->hasFile('foto_product')) {
+    //     $filename = $request->foto_product->getClientOriginalName();
+    //     $path = $request->foto_product->storeAs('public/images', $filename);
+    //     $product->foto_product = $filename;
+    // }
+
+    // $product->save();
+
+        ]);
+        return redirect ('admin/product')->with('success', 'Data Product berhasil diedit!');
+    }
+
 }
