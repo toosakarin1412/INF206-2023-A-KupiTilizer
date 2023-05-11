@@ -33,11 +33,14 @@
                     <th scope="col" class="px-6 py-3">
                         IDPembelian
                     </th>
-                    <th scope="col" class="px-6 py-3 w-1/4">
-                        User
-                    </th>
                     <th scope="col" class="px-6 py-3">
                         Status
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-1/4">
+                        Jumlah Total
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-1/4">
+                        Kurir
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Action
@@ -45,40 +48,48 @@
                 </tr>
             </thead>
             <tbody>
-                
-                <tr class="bg-white hover:bg-gray-50 rounded-xl">
-                    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                        123321221321
-                    </th>
-                    <td class="px-6 py-4">
-                        User
-                    </td>
-                    <td class="px-6 py-4">
+                @foreach($dataRequest as $item)
+                    <tr class="bg-white hover:bg-gray-50 rounded-xl">
+                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                            {{$item->id}}
+                        </th>
+                        <td class="px-6 py-4">
                         <div class="flex items-center">
-                           
+                            @if($item->status == "waiting" || $item->status == "process")
                             <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div>
-                            waiting 
-                            <!-- <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
-                            
-                            <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div> -->
-                            
-                            <span class="capitalize"></span>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 flex gap-1">
-                        <form action="/<?php echo Auth::user()->role?>" method="get" class='d-inline'>
-                            <button type="submit" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</button>
-                        </form>
-                        
-                        <form action="/<?php echo Auth::user()->role?>" method="get" class='d-inline'>
-                            <button type="submit" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Accept</button>
-                        </form>
-                        <form action="/<?php echo Auth::user()->role?>" method="get" class='d-inline'>
-                            <button type="submit" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Decline</button>
-                        </form>        
-                    </td>
-                </tr>
-                
+                            @elseif($item->status == "decline")
+                            <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div>
+                            @else
+                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
+                            @endif
+                                <span class="capitalize">{{ $item->status }}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $item->total_belanja }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $item->kurir_id }}
+                        </td>
+                        <td class="px-6 py-4 flex gap-1">
+                            <form action="/<?php echo Auth::user()->role?>/pembelian/detail/{{$item->id}}" method="get" class='d-inline'>
+                                <button type="submit" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</button>
+                            </form>
+                            @if($item->status == "process")
+                            <form action="/<?php echo Auth::user()->role?>/pembelian/cancel/{{$item->id}}" method="get" class='d-inline'>
+                                <button type="submit" class="bg-red-300 text-white font-bold rounded-md px-4 py-2">Cancel</button>
+                            </form>
+                            @elseif($item->status == "waiting")
+                            <form action="/<?php echo Auth::user()->role?>/pembelian/accept/{{$item->id}}" method="get" class='d-inline'>
+                                <button type="submit" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Accept</button>
+                            </form>
+                            <form action="/<?php echo Auth::user()->role?>/pembelian/decline/{{$item->id}}" method="get" class='d-inline'>
+                                <button type="submit" class="bg-red-300 text-white font-bold rounded-md px-4 py-2">Decline</button>
+                            </form>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
             </tbody>
         </table>
     </div>
