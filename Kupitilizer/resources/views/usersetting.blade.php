@@ -11,5 +11,6 @@
     <div>Email</div>
     <div>Jenis Kelamin</div>
     <div>Alamat</div>
+    <div>Birthday</div>
     </div>
 @endsection
