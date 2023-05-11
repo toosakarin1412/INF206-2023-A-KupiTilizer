@@ -41,7 +41,6 @@ Route::get('/market/product/{id}', [ProductController::class, 'detailProduct']);
 // Coupon
 Route::get('/coupon', [CouponController::class, 'halamanKupon']);
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -58,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/keranjang', [KeranjangController::class, 'index']);
     Route::post('/keranjang/addkeranjang', [KeranjangController::class, 'store'])->name('keranjang.add');
     Route::post('/keranjang/delete/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.delete');
+    Route::post('/pembelian', [PembelianController::class, 'beli']);
 
     Route::get('/mycoupon', [CouponController::class, 'MyCoupon']);
 
