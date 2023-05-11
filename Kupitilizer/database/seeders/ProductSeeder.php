@@ -18,9 +18,7 @@ class ProductSeeder extends Seeder
             'id' => '123456781',
             'nama_product' => 'Product Example 1',
             'harga' => 50000,
-            'deskripsi' => 'Etiam consequat sem ullamcorper,
-            euismod metus sit amet, tristique justo.
-            Vestibulum mattis, nisi ut.',
+            'deskripsi' => 'Etiam consequat sem ullamcorper, euismod metus sit amet, tristique justo. Vestibulum mattis, nisi ut.',
         ]);
           Product::create([
             'id' => '123456782',
@@ -33,6 +31,24 @@ class ProductSeeder extends Seeder
         Product::create([
             'id' => '123456783',
             'nama_product' => 'Product Example 3',
+            'harga' => 100000,
+            'deskripsi' => 'Etiam consequat sem ullamcorper,
+            euismod metus sit amet, tristique justo.
+            Vestibulum mattis, nisi ut.',
+        ]);
+
+        Product::create([
+            'id' => '123456784',
+            'nama_product' => 'Product Example 4',
+            'harga' => 100000,
+            'deskripsi' => 'Etiam consequat sem ullamcorper,
+            euismod metus sit amet, tristique justo.
+            Vestibulum mattis, nisi ut.',
+        ]);
+
+        Product::create([
+            'id' => '123456785',
+            'nama_product' => 'Product Example 5',
             'harga' => 100000,
             'deskripsi' => 'Etiam consequat sem ullamcorper,
             euismod metus sit amet, tristique justo.

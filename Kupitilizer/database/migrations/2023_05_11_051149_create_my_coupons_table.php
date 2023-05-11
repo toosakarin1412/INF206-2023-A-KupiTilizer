@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('coupons', function (Blueprint $table) {
-            $table->string('id')->unique();
-            $table->string('nama_coupon');
-            $table->integer('poin');
-            $table->string('deskripsi');
-            //$table->string('masa_berlaku');
-           // $table->string('gambar_coupon');
+        Schema::create('my_coupons', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('coupons');
+        Schema::dropIfExists('my_coupons');
     }
 };
