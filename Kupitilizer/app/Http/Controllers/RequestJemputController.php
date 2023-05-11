@@ -40,7 +40,7 @@ class RequestJemputController extends Controller
             'waktu_jemput' => $request->waktuJemput,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Request Berhasil');
     }
 
     /**
@@ -61,7 +61,7 @@ class RequestJemputController extends Controller
         DB::table('request_jemputs')->where('id', $id)->update([
             'status' => 'accepted'
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Permintaan Diterima');
     }
 
     /**
@@ -72,7 +72,7 @@ class RequestJemputController extends Controller
         DB::table('request_jemputs')->where('id', $id)->update([
             'status' => 'done'
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Permintaan Selesai');
     }
 
     
