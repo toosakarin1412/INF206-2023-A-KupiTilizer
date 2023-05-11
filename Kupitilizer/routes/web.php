@@ -72,13 +72,17 @@ Route::middleware('auth')->group(function () {
 
         // Product
         Route::get('/admin/product', [ProductController::class, 'index']);
+
         Route::get('/admin/product/manageproduct', [ProductController::class, 'manageProduct']);
         Route::get('/admin/product/addproduct', [ProductController::class, 'addProduct']);
 
 
         // Coupon
         Route::get('/admin/coupon', [CouponController::class, 'index']);
-
+        Route::post('/admin/coupon', [CouponController::class, 'addCoupon']);
+        Route::delete('/admin/coupon/{id}', [CouponController::class, 'delete']);
+        Route::get('/admin/coupon/edit/{id}', [CouponController::class, 'show']);
+        Route::patch('/admin/coupon/update/{id}', [CouponController::class, 'update']); 
         /** 
          * Halaman Manage Akun
         */
@@ -112,7 +116,11 @@ Route::middleware('auth')->group(function () {
         
         // Coupon
         Route::get('/manager/coupon', [CouponController::class, 'index']);
-
+        Route::post('/manager/coupon', [CouponController::class, 'addCoupon']);
+        Route::delete('/manager/coupon/{id}', [CouponController::class, 'delete']);
+        Route::get('/manager/coupon/edit/{id}', [CouponController::class, 'show']); 
+        Route::patch('/manager/coupon/update/{id}', [CouponController::class, 'update']); 
+      
         /** 
          * Halaman Manage Akun
         */
