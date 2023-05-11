@@ -23,15 +23,15 @@
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Jenis Kelamin</div>
-                    <div class="px-4 py-2">-</div>
+                    <div class="px-4 py-2">{{Auth::user()->jeniskelamin}}</div>
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Nomor HP</div>
-                    <div class="px-4 py-2">-</div>
+                    <div class="px-4 py-2">{{Auth::user()->hp}}</div>
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Alamat</div>
-                    <div class="px-4 py-2">-</div>
+                    <div class="px-4 py-2">{{Auth::user()->alamat}}</div>
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Email</div>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Birthday</div>
-                    <div class="px-4 py-2">-</div>
+                    <div class="px-4 py-2">{{Auth::user()->ulang_tahun}}</div>
                 </div>
             </div>
         </div>
