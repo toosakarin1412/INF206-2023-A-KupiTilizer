@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Product;
+use App\Models\Keranjang;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,14 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('market', ['product' => $products]);
+    }
+
+    public function detailProduct($id): View
+    {
+        $data = Product::where('id', $id)->get()->first();
+        // dd($data);
+
+        return view('infoproduct', ['data' => $data]);
     }
 
     /**

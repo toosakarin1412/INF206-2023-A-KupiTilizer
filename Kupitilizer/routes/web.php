@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KurirController;
+use App\Http\Controllers\KeranjangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,9 @@ Route::get('/statuspembelian', function(){
     return view('statuspembelian');
 })->name('statuspembelian');
 
+Route::get('/market', [ProductController::class, 'market'])->name('product.market');
+Route::get('/market/product/{id}', [ProductController::class, 'detailProduct']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.edit');
@@ -48,7 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/requestjemput/create', [RequestJemputController::class, 'create'])->name('penjemputan.create');
 
     // Pembelian
-    Route::get('/market', [ProductController::class, 'market'])->name('product.market');
+    Route::post('/keranjang/addkeranjang', [KeranjangController::class, 'store'])->name('keranjang.add');
 
     // Coupon
     Route::get('/coupon', function () {
