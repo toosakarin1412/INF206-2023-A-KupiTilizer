@@ -72,13 +72,19 @@ Route::middleware('auth')->group(function () {
 
         // Product
         Route::get('/admin/product', [ProductController::class, 'index']);
-        Route::get('/admin/product/manageproduct', [ProductController::class, 'manageProduct']);
-        Route::get('/admin/product/addproduct', [ProductController::class, 'addProduct']);
 
+        Route::get('/admin/product/manageproduct', [ProductController::class, 'manageProduct']);
+        Route::post('/admin/product/addproduct', [ProductController::class, 'addProduct']);
+        Route::delete('/admin/product/deleteproduct/{id}', [ProductController::class, 'destroy']);
+        Route::get('/admin/product/editproduct/{id}', [ProductController::class, 'show']);
+        Route::patch('/admin/product/updateproduct/{id}', [ProductController::class, 'update']);
 
         // Coupon
         Route::get('/admin/coupon', [CouponController::class, 'index']);
-
+        Route::post('/admin/coupon', [CouponController::class, 'addCoupon']);
+        Route::delete('/admin/coupon/{id}', [CouponController::class, 'delete']);
+        Route::get('/admin/coupon/edit/{id}', [CouponController::class, 'show']);
+        Route::patch('/admin/coupon/update/{id}', [CouponController::class, 'update']); 
         /** 
          * Halaman Manage Akun
         */
@@ -108,11 +114,18 @@ Route::middleware('auth')->group(function () {
         // Product
         Route::get('/manager/product', [ProductController::class, 'index']);
         Route::get('/manager/product/manageproduct', [ProductController::class, 'manageProduct']);
-        Route::get('/manager/product/addproduct', [ProductController::class, 'addProduct']);
-        
+        Route::post('/manager/product/addproduct', [ProductController::class, 'addProduct']);
+        Route::delete('/manager/product/deleteproduct/{id}', [ProductController::class, 'destroy']);
+        Route::get('/manager/product/editproduct/{id}', [ProductController::class, 'show']);
+        Route::patch('/manager/product/updateproduct/{id}', [ProductController::class, 'update']);
+
         // Coupon
         Route::get('/manager/coupon', [CouponController::class, 'index']);
-
+        Route::post('/manager/coupon', [CouponController::class, 'addCoupon']);
+        Route::delete('/manager/coupon/{id}', [CouponController::class, 'delete']);
+        Route::get('/manager/coupon/edit/{id}', [CouponController::class, 'show']); 
+        Route::patch('/manager/coupon/update/{id}', [CouponController::class, 'update']); 
+      
         /** 
          * Halaman Manage Akun
         */
