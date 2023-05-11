@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
      <!-- Breadcrumb -->
     <nav class="flex text-gray-700 border border-gray-200 rounded-lg overflow-x-auto mx-10 my-5 md:mx-20 py-5 px-5" aria-label="Breadcrumb">
