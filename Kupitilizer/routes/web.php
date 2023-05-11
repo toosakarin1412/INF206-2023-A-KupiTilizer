@@ -48,9 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/requestjemput/create', [RequestJemputController::class, 'create'])->name('penjemputan.create');
 
     // Pembelian
-    Route::get('/market', function () {
-        return view('market');
-    });
+    Route::get('/market', [ProductController::class, 'market'])->name('product.market');
 
     // Coupon
     Route::get('/coupon', function () {

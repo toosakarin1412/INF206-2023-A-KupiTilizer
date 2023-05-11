@@ -16,6 +16,12 @@ use Illuminate\View\View;
 
 class ProductController extends Controller
 {
+    public function market(): View
+    {
+        $products = Product::all();
+        return view('market', ['product' => $products]);
+    }
+
     /**
      * Display manage product 
      * 

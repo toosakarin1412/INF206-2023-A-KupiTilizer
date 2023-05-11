@@ -59,6 +59,9 @@
                                 <li>
                                     <a href="/statuspermintaan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Status Permintaan</a>
                                 </li>
+                                <li>
+                                    <a href="/keranjang" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Keranjang</a>
+                                </li>
                                 @else
                                 <li>
                                     <a href="/<?php echo Auth::user()->role?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
