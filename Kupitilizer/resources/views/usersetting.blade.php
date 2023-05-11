@@ -10,37 +10,37 @@
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Nama</div>
                 <div class="px-4 py-2">
-        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="{{Auth::user()->name}}">
+        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="{{Auth::user()->name}}" disabled>
     </div>
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Jenis Kelamin</div>
                 <div class="px-4 py-2">
-        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="">
+        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="" disabled>
     </div>
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Nomor HP</div>
-                <<div class="px-4 py-2">
-        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="">
+                <div class="px-4 py-2">
+        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="" disabled>
     </div>
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Alamat</div>
                 <div class="px-4 py-2">
-        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="">
+        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="" disabled>
     </div>
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Email</div>
                 <div class="px-4 py-2">
-        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="{{Auth::user()->email}}">
+        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="{{Auth::user()->email}}" disabled>
     </div>
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Birthday</div>
                 <div class="px-4 py-2">
-        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="">
+        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="" disabled>
     </div>
             </div>
         </div>
