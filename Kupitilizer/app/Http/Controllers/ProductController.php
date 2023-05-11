@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Product;
+use App\Models\Keranjang;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,20 @@ use Illuminate\View\View;
 
 class ProductController extends Controller
 {
+    public function market(): View
+    {
+        $products = Product::all();
+        return view('market', ['product' => $products]);
+    }
+
+    public function detailProduct($id): View
+    {
+        $data = Product::where('id', $id)->get()->first();
+        // dd($data);
+
+        return view('infoproduct', ['data' => $data]);
+    }
+
     /**
      * Display manage product 
      * 
@@ -70,20 +85,13 @@ class ProductController extends Controller
             'nama_product' => $request-> nama_product,
             'harga' => $request->  harga,
             'deskripsi' => $request-> deskripsi,
-
-
-        //TO BE ADDED, PRODUCT PICTURE
-            // simpan gambar ke dalam server
-    // if ($request->hasFile('foto_product')) {
-    //     $filename = $request->foto_product->getClientOriginalName();
-    //     $path = $request->foto_product->storeAs('public/images', $filename);
-    //     $product->foto_product = $filename;
-    // }
-
-    // $product->save();
-
         ]);
-        return redirect ('admin/product')->with('success', 'Data Product berhasil diedit!');
+        if(Auth::user()->role == "admin"){
+            return redirect ('admin/product')->with('success', 'Data Product berhasil diedit!');
+        }else{
+            return redirect ('manager/product')->with('success', 'Data Product berhasil diedit!');            
+        }
+       
     }
 
 }
