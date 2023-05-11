@@ -10,5 +10,6 @@
     <div>Nomor HP</div>
     <div>Email</div>
     <div>Jenis Kelamin</div>
+    <div>Alamat</div>
     </div>
 @endsection
