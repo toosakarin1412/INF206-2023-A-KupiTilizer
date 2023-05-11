@@ -23,15 +23,15 @@
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Jenis Kelamin</div>
-                    <div class="px-4 py-2">{{Auth::user()->jeniskelamin}}</div>
+                    <div class="px-4 py-2">-</div>
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Nomor HP</div>
-                    <div class="px-4 py-2">{{Auth::user()->hp}}</div>
+                    <div class="px-4 py-2">-</div>
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Alamat</div>
-                    <div class="px-4 py-2">{{Auth::user()->alamat}}</div>
+                    <div class="px-4 py-2">-</div>
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Email</div>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Birthday</div>
-                    <div class="px-4 py-2">{{Auth::user()->ulang_tahun}}</div>
+                    <div class="px-4 py-2">-</div>
                 </div>
             </div>
         </div>
@@ -120,12 +120,10 @@
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center">
-                            @if ($item->status == 'waiting')
+                        @if ($item->status == 'waiting' || $item->status == 'process')
                                 <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div>
-                            @elseif($item->status == 'accepted')
-                                <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
                             @else
-                                <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div>
+                                <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
                             @endif
                             <span class="capitalize">{{ $item->status }}</span>
                         </div>
