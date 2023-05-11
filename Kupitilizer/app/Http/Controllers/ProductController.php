@@ -39,7 +39,7 @@ class ProductController extends Controller
         ]);
 
         $product = Product::create([
-            'id' => (int)$date->format('ymd') * 1000000 + rand(1, 999999),
+            'id' => (string)$date->format('ymd').bin2hex(random_bytes(2)),
             'nama_product' => $request->nama_product,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi,
