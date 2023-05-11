@@ -93,4 +93,13 @@ class CouponController extends Controller
         return redirect('/admin/coupon')->with('success', 'Data coupon berhasil diedit!');
     }
 
+    public function halamanKupon(){
+        $coupons=DB::table('coupons')->get();
+        return view('coupon',['coupons'=>$coupons]);
+    }
+
+    public function MyCoupon(){
+        $coupons=DB::table('coupons')->get();
+        return view('mycoupon',['coupons'=>$coupons]);
+    }
 };
