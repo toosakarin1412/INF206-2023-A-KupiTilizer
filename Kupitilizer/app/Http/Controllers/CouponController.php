@@ -101,7 +101,7 @@ class CouponController extends Controller
     }
 
     public function MyCoupon(){
-        $coupons=DB::table('coupons')->get();
+        $coupons=DB::table('my_coupons')->join('coupons', 'coupons.id', '=', 'my_coupons.coupon_id')->get();
         return view('mycoupon',['coupons'=>$coupons]);
     }
 
@@ -122,7 +122,5 @@ class CouponController extends Controller
             //dd($poinUser);
         return redirect()->back()->with("success","Coupon berhasil ditukarkan");
     }
-
-    
 
 };

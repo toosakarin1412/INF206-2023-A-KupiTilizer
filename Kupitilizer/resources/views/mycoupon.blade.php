@@ -9,7 +9,6 @@
         <div class="relative shadow-md sm:rounded-lg p-4 text-gray-700 border border-gray-200 bg-gray-50 hover:bg-green-100">
             <img class="h-auto max-w-6/12 justify-item-center rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="productimg">
             <h1 class="text-left font-bold md:text-xl my-2">{{ $item->nama_coupon }}</h1>
-            <p class="font-semibold md:text-xl text-left">{{ $item->poin }} Poin</p>
             <p class="md:h-20 truncate">{{ $item->deskripsi }}</p>
         </div>
     @endforeach
