@@ -19,7 +19,8 @@ class ProfileController extends Controller
     public function show()
     {
         $data = DB::table('request_jemputs')->where('user_id', Auth::user()->id)->get();
-        return view('profile', ['dataRequest' => $data]);
+        $beli = DB::table('pembelians')->where('user_id', Auth::user()->id)->get();
+        return view('profile', ['dataRequest' => $data, 'beli' => $beli]);
     }
 
     /**
