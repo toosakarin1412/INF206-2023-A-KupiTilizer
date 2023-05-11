@@ -34,8 +34,8 @@
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Email</div>
                 <div class="px-4 py-2">
-                    <a class="text-blue-800" href="mailto:jane@example.com">{{Auth::user()->email}}</a>
-                </div>
+        <input type="text" class="px-4 py-2 border border-gray-300 rounded-md" value="{{Auth::user()->email}}">
+    </div>
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Birthday</div>
