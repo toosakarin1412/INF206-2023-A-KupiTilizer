@@ -175,6 +175,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/kurir/requestjemput/detail/{id}', [KurirController::class, 'detail']);
         Route::get('/kurir/requestjemput/accept/{id}', [KurirController::class, 'acceptRequest']);
         Route::get('/kurir/requestjemput/cancel/{id}', [KurirController::class, 'cancelRequest']);
+
+        Route::get('/kurir/pembelian', [KurirController::class, 'pembelian']);
+        Route::get('/kurir/pembelian/detail/{id}', [KurirController::class, 'detailPembelian']);
+        Route::get('/kurir/pembelian/done/{id}', [KurirController::class, 'doneRequest']);
     });
 });
 
