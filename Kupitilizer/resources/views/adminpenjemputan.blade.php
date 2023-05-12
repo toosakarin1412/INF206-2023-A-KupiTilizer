@@ -17,7 +17,7 @@
 
 @section('content')
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:p-4 text-gray-700 border border-gray-200 bg-gray-50">
-    <div class="flex items-center justify-between py-4 px-4 sm:px-0">
+    <!-- <div class="flex items-center justify-between py-4 px-4 sm:px-0">
         <label for="table-search" class="sr-only">Search</label>
         <div class="relative">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -25,7 +25,7 @@
             </div>
             <input type="text" id="table-search-users" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Request Penjemputan">
         </div>
-    </div>
+    </div> -->
     <div class="relative overflow-x-auto shadow-lg sm:rounded-xl border-gray-50 border-3">
         <table class="w-full text-sm text-left text-gray-500 ">
             <thead class="text-xs text-gray-700 bg-gray-50">

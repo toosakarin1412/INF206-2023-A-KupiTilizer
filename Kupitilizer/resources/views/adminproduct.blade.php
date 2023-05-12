@@ -1,4 +1,3 @@
-//adminproduct.blade.php
 @extends('layouts.dashboardLayout')
 
 @section('breadcrumb')
@@ -39,8 +38,8 @@
     @endif
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:p-4 text-gray-700 border border-gray-200 bg-gray-50">
-        <div class="grid grid-cols-2">
-            <!-- find Product -->
+        <div class="flex justify-end">
+            <!-- find Product
             <div class="flex items-center justify-between py-4 px-4 sm:px-auto">
                 <label for="table-search" class="sr-only">Search</label>
                 <div class="relative">
@@ -56,7 +55,7 @@
                         class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Cari Product">
                 </div>
-            </div>
+            </div> -->
 
             <!-- button to add product -->
             <div class="py-4 px-4 justify-self-end">

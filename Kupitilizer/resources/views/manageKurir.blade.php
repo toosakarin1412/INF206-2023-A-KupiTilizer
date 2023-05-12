@@ -28,8 +28,8 @@
     </div>
 @endif
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:p-4 text-gray-700 border border-gray-200 bg-gray-50">
-    <div class="grid md:grid-cols-2 grid-cols-1 p-4">
-        <div class="flex items-center justify-between sm:px-auto">
+    <div class="flex justify-end">
+        <!-- <div class="flex items-center justify-between sm:px-auto">
                 <label for="table-search" class="sr-only">Search</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -37,7 +37,7 @@
                     </div>
                     <input type="text" id="table-search-users" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Nama Kurir">
                 </div>
-        </div>
+        </div> -->
         <div class="justify-self-end">
             <button type="button" data-modal-target="tambah-modal" data-modal-toggle="tambah-modal" class="py-2.5 px-5 mr-2 mb-2 w-full text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-leaf focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-leaf-700">Tambah Kurir</button>
         </div>
