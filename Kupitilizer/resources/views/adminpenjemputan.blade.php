@@ -17,7 +17,7 @@
 
 @section('content')
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:p-4 text-gray-700 border border-gray-200 bg-gray-50">
-    <div class="flex items-center justify-between py-4 px-4 sm:px-0">
+    <!-- <div class="flex items-center justify-between py-4 px-4 sm:px-0">
         <label for="table-search" class="sr-only">Search</label>
         <div class="relative">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -25,7 +25,7 @@
             </div>
             <input type="text" id="table-search-users" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Request Penjemputan">
         </div>
-    </div>
+    </div> -->
     <div class="relative overflow-x-auto shadow-lg sm:rounded-xl border-gray-50 border-3">
         <table class="w-full text-sm text-left text-gray-500 ">
             <thead class="text-xs text-gray-700 bg-gray-50">
@@ -55,12 +55,10 @@
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center">
-                            @if($item->status == "waiting")
+                            @if($item->status == "waiting" || $item->status == "process")
                             <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div>
-                            @elseif($item->status == "accepted")
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
                             @else
-                            <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div>
+                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
                             @endif
                             <span class="capitalize">{{$item->status}}</span>
                         </div>
@@ -69,14 +67,11 @@
                         <form action="/<?php echo Auth::user()->role?>/requestjemput/detail/{{$item->id}}" method="get" class='d-inline'>
                             <button type="submit" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</button>
                         </form>
-                        @if($item->status == "waiting")
-                        <form action="/<?php echo Auth::user()->role?>/requestjemput/accept/{{$item->id}}" method="get" class='d-inline'>
-                            <button type="submit" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Accept</button>
-                        </form>
-                        <form action="/<?php echo Auth::user()->role?>/requestjemput/decline/{{$item->id}}" method="get" class='d-inline'>
-                            <button type="submit" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Decline</button>
-                        </form>
-                        @endif                  
+                        @if($item->status == "process")
+                        <form action="/<?php echo Auth::user()->role?>/requestjemput/done/{{$item->id}}" method="get" class='d-inline'>
+                            <button type="submit" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Done</button>
+                        </form>    
+                        @endif
                     </td>
                 </tr>
                 @endforeach

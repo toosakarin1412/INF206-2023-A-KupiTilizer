@@ -24,6 +24,73 @@ class KurirController extends Controller
         return view('manageKurir', ['kurir' => $kurir]);
     }
 
+    public function requestJemput(){
+        $data = DB::table('request_jemputs')->get(['id', 'name', 'status']);
+        // dd($data);
+        return view('kurirpenjemputan', ['dataRequest' => $data]);
+    }
+
+    public function pembelian(){
+        $data = DB::table('pembelians')->where('kurir_id', Auth::user()->id)->get();
+        return view('kurirpembelian', ['dataRequest' => $data]);
+    }
+
+    public function detail($id)
+    {
+        $data = DB::table('request_jemputs')->where('id', $id)->get();
+
+        return view('detailRequestPenjemputanKurir', ['data' => $data[0]]);
+    }
+
+    public function detailPembelian($id)
+    {
+        $data = DB::table('pembelians')->where('id', $id)->get();
+
+        return view('detailKurirPembelian', ['data' => $data[0]]);
+    }
+
+        /**
+     * 
+     */
+    public function acceptRequest($id)
+    {
+        DB::table('request_jemputs')->where('id', $id)->update([
+            'status' => 'process',
+            'kurir_id' => Auth::user()->id
+        ]);
+        return redirect()->back();
+    }
+
+    /**
+     * 
+     */
+    public function declineRequest($id)
+    {
+        DB::table('request_jemputs')->where('id', $id)->update([
+            'status' => 'decline'
+        ]);
+        return redirect()->back();
+    }
+
+        /**
+     * 
+     */
+    public function cancelRequest($id)
+    {
+        DB::table('request_jemputs')->where('id', $id)->update([
+            'status' => 'waiting'
+        ]);
+        return redirect()->back();
+    }
+
+    public function doneRequest($id)
+    {
+        DB::table('pembelians')->where('id', $id)->update([
+            'status' => 'done'
+        ]);
+        return redirect()->back();
+    }
+
     /**
      * 
      * Menambahkan akun user

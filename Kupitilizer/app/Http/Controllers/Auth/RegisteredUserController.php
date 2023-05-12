@@ -37,6 +37,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
+            'id' => uniqid(),
             'name' => $request->name,
             'email' => $request->email,
             'role' => 'user',
@@ -47,7 +48,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME)->with('success', 'Register Berhasil');;
     }
     
     public function add(Request $request): RedirectResponse
@@ -59,6 +60,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
+            'id' => uniqid(),
             'name' => $request->name,
             'email' => $request->email,
             'role' => 'user',
@@ -67,7 +69,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect('manager/manageuser');
+        return redirect('manager/manageuser')->with('success', 'Resgter Berhasil');;
     }
 }
 

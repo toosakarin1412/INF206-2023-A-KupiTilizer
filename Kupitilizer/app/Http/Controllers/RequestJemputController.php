@@ -40,7 +40,7 @@ class RequestJemputController extends Controller
             'waktu_jemput' => $request->waktuJemput,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Request Berhasil');
     }
 
     /**
@@ -61,18 +61,36 @@ class RequestJemputController extends Controller
         DB::table('request_jemputs')->where('id', $id)->update([
             'status' => 'accepted'
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Permintaan Diterima');
     }
 
     /**
      * 
      */
-    public function declineRequest($id)
+    public function doneRequest($id)
     {
-        DB::table('request_jemputs')->where('id', $id)->update([
-            'status' => 'decline'
-        ]);
-        return redirect()->back();
+        
+
+        $data = DB::table('request_jemputs')->where('id', $id)->get();
+        $poin = DB::table('users')->where('id', $data[0]->user_id)->get(['poin']);
+        // dd($poin[0]->poin);
+        DB::beginTransaction();
+        try {
+            DB::table('users')->where('id', $data[0]->user_id)->update([
+                'poin' => $poin[0]->poin+$data[0]->total_sampah,
+            ]);
+            DB::commit();
+        } catch (Exception $e) {
+            DB::table('request_jemputs')->where('id', $id)->update([
+                'status' => 'done'
+            ]);
+            DB::roolback();
+            return redirect()->back()->with('failed', 'Permintaan Gagal');
+        }
+        
+        
+
+        return redirect()->back()->with('success', 'Permintaan Selesai');
     }
 
     

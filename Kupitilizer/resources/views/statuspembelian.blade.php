@@ -7,7 +7,7 @@
 
 <div class="relative m-10 py-5 shadow-2xl border-2 border-gray rounded-xl p-5 overflow-x-auto ">
         <div>
-            <p class="font-bold mb-5">History Request Penjemputan</p>
+            <p class="font-bold mb-5">Status Pembelian</p>
         </div>
         <table class="w-full text-sm text-left text-gray-500 ">
             <thead class="text-xs text-gray-700 bg-gray-50">

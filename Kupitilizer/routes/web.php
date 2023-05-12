@@ -2,13 +2,14 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequestJemputController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KurirController;
+use App\Http\Controllers\KeranjangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,16 +31,18 @@ Route::get('/aboutus', function(){
     return view('aboutus');
 })->name('aboutus');
 
-Route::get('/statuspembelian', function(){
-    return view('statuspembelian');
-})->name('statuspembelian');
+Route::get('/market', [ProductController::class, 'market'])->name('product.market');
+Route::get('/market/product/{id}', [ProductController::class, 'detailProduct']);
 
+// Coupon
+Route::get('/coupon', [CouponController::class, 'halamanKupon']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/setting', [ProfileController::class, 'setting']);
+    Route::post('/setting/update', [ProfileController::class, 'updateData']);
 
     // Request Jemput
     Route::get('/requestjemput', function () {
@@ -48,14 +51,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/requestjemput/create', [RequestJemputController::class, 'create'])->name('penjemputan.create');
 
     // Pembelian
-    Route::get('/market', function () {
-        return view('market');
-    });
+    Route::get('/keranjang', [KeranjangController::class, 'index']);
+    Route::post('/keranjang/addkeranjang', [KeranjangController::class, 'store'])->name('keranjang.add');
+    Route::post('/keranjang/delete/{id}', [KeranjangController::class, 'destroy'])->name('keranjang.delete');
+    Route::post('/pembelian', [PembelianController::class, 'beli']);
 
-    // Coupon
-    Route::get('/coupon', function () {
-        return view('coupon');
-    });
+    Route::get('/mycoupon', [CouponController::class, 'MyCoupon']);
+    Route::post('/coupon/add', [CouponController::class, 'redeem']);
 
     Route::middleware(['user-access:admin'])->group(function () {
         // Dashboard
@@ -65,17 +67,30 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/requestjemput', [RequestJemputController::class, 'index']);
         Route::get('/admin/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
         Route::get('/admin/requestjemput/accept/{id}', [RequestJemputController::class, 'acceptRequest']);
-        Route::get('/admin/requestjemput/decline/{id}', [RequestJemputController::class, 'declineRequest']);
+        Route::get('/admin/requestjemput/done/{id}', [RequestJemputController::class, 'doneRequest']);
 
         // Pembelian
         Route::get('/admin/pembelian', [PembelianController::class, 'index']);
+        Route::get('/admin/pembelian/detail/{id}', [PembelianController::class, 'detail']);
+        Route::get('/admin/pembelian/accept/{id}', [PembelianController::class, 'acceptRequest']);
+        Route::get('/admin/pembelian/cancel/{id}', [PembelianController::class, 'cancelRequest']);
+        Route::get('/admin/pembelian/decline/{id}', [PembelianController::class, 'declineRequest']);
 
         // Product
         Route::get('/admin/product', [ProductController::class, 'index']);
 
+        Route::get('/admin/product/manageproduct', [ProductController::class, 'manageProduct']);
+        Route::post('/admin/product/addproduct', [ProductController::class, 'addProduct']);
+        Route::delete('/admin/product/deleteproduct/{id}', [ProductController::class, 'destroy']);
+        Route::get('/admin/product/editproduct/{id}', [ProductController::class, 'show']);
+        Route::patch('/admin/product/updateproduct/{id}', [ProductController::class, 'update']);
+
         // Coupon
         Route::get('/admin/coupon', [CouponController::class, 'index']);
-
+        Route::post('/admin/coupon', [CouponController::class, 'addCoupon']);
+        Route::delete('/admin/coupon/{id}', [CouponController::class, 'delete']);
+        Route::get('/admin/coupon/edit/{id}', [CouponController::class, 'show']);
+        Route::patch('/admin/coupon/update/{id}', [CouponController::class, 'update']); 
         /** 
          * Halaman Manage Akun
         */
@@ -97,17 +112,30 @@ Route::middleware('auth')->group(function () {
         Route::get('/manager/requestjemput', [RequestJemputController::class, 'index']);
         Route::get('/manager/requestjemput/detail/{id}', [RequestJemputController::class, 'detail']);
         Route::get('/manager/requestjemput/accept/{id}', [RequestJemputController::class, 'acceptRequest']);
-        Route::get('/manager/requestjemput/decline/{id}', [RequestJemputController::class, 'declineRequest']);
+        Route::get('/manager/requestjemput/done/{id}', [RequestJemputController::class, 'doneRequest']);
 
         // Pembelian
         Route::get('/manager/pembelian', [PembelianController::class, 'index']);
+        Route::get('/manager/pembelian/detail/{id}', [PembelianController::class, 'detail']);
+        Route::get('/manager/pembelian/accept/{id}', [PembelianController::class, 'acceptRequest']);
+        Route::get('/manager/pembelian/cancel/{id}', [PembelianController::class, 'cancelRequest']);
+        Route::get('/manager/pembelian/decline/{id}', [PembelianController::class, 'declineRequest']);
 
         // Product
         Route::get('/manager/product', [ProductController::class, 'index']);
+        Route::get('/manager/product/manageproduct', [ProductController::class, 'manageProduct']);
+        Route::post('/manager/product/addproduct', [ProductController::class, 'addProduct']);
+        Route::delete('/manager/product/deleteproduct/{id}', [ProductController::class, 'destroy']);
+        Route::get('/manager/product/editproduct/{id}', [ProductController::class, 'show']);
+        Route::patch('/manager/product/updateproduct/{id}', [ProductController::class, 'update']);
 
         // Coupon
         Route::get('/manager/coupon', [CouponController::class, 'index']);
-
+        Route::post('/manager/coupon', [CouponController::class, 'addCoupon']);
+        Route::delete('/manager/coupon/{id}', [CouponController::class, 'delete']);
+        Route::get('/manager/coupon/edit/{id}', [CouponController::class, 'show']); 
+        Route::patch('/manager/coupon/update/{id}', [CouponController::class, 'update']); 
+      
         /** 
          * Halaman Manage Akun
         */
@@ -139,10 +167,18 @@ Route::middleware('auth')->group(function () {
         
     });
 
-
-
     Route::middleware(['user-access:kurir'])->group(function () {
         Route::get('/kurir', [KurirController::class, 'dashboard']);
+
+        // Request Jemput
+        Route::get('/kurir/requestjemput', [KurirController::class, 'requestJemput']);
+        Route::get('/kurir/requestjemput/detail/{id}', [KurirController::class, 'detail']);
+        Route::get('/kurir/requestjemput/accept/{id}', [KurirController::class, 'acceptRequest']);
+        Route::get('/kurir/requestjemput/cancel/{id}', [KurirController::class, 'cancelRequest']);
+
+        Route::get('/kurir/pembelian', [KurirController::class, 'pembelian']);
+        Route::get('/kurir/pembelian/detail/{id}', [KurirController::class, 'detailPembelian']);
+        Route::get('/kurir/pembelian/done/{id}', [KurirController::class, 'doneRequest']);
     });
 });
 
