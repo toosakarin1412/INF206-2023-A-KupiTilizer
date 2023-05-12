@@ -50,25 +50,25 @@
         </div>
         <div class="w-full h-auto md:col-span-1">
             <div class="border border-gray shadow-xl rounded-xl p-3">
-                <div class="">
-                    <p class="font-bold">Gunakan Kupon</p>
-                    <input type="text" name="kode_kupon" class="rounded-xl">
-                </div>
-                <hr class="my-3">
-                <div class="my-3">
-                    <p class="font-bold">Ringkasan Belanja</p>
-                    <div class="flex justify-between">
-                        <p>Total Harga</p>
-                        <p class="">Rp{{$totalBelanja}}</p>
-                    </div>
-                    <hr class="my-3">
-                    <div class="flex justify-between font-bold">
-                        <p>Total Harga</p>
-                        <p class="">Rp{{$totalBelanja}}</p>
-                    </div>
-                </div>
                 <form action="/pembelian" method="POST">
                     @csrf
+                    <div class="">
+                        <p class="font-bold">Gunakan Kupon</p>
+                        <input type="text" name="kode_kupon" class="rounded-xl">
+                    </div>
+                    <hr class="my-3">
+                    <div class="my-3">
+                        <p class="font-bold">Ringkasan Belanja</p>
+                        <div class="flex justify-between">
+                            <p>Total Harga</p>
+                            <p class="">Rp{{$totalBelanja}}</p>
+                        </div>
+                        <hr class="my-3">
+                        <div class="flex justify-between font-bold">
+                            <p>Total Harga</p>
+                            <p class="">Rp{{$totalBelanja}}</p>
+                        </div>
+                    </div>
                     <div>
                         <button type="submit" class="bg-leaf hover:bg-green-900 p-3 w-full rounded-xl font-bold text-white" type="submit">Beli</button>
                     </div>

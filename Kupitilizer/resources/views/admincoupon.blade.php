@@ -53,8 +53,8 @@
         <!-- <img class="scale-75 h-auto max-w-6/12 justify-item-center rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">-->
 
         <h1 class = "text-center font-bold text-2xl">{{ $item-> nama_coupon }}</h1>
-        <p class = "my-1 text-center relative overflow-x-auto sm:rounded-lg text-gray-700 border border-gray-200 bg-gray-50">{{ $item-> poin }} Poin</p> 
-        <p class = "my-1 text-center relative overflow-x-auto sm:rounded-lg text-gray-700 border border-gray-200 bg-gray-50">{{ $item-> deskripsi }}</p> 
+        <p class = "my-1 text-center relative overflow-x-auto sm:rounded-lg text-gray-700 bg-gray-50">{{ $item-> poin }} Poin</p> 
+        <p class = "my-1 text-center relative overflow-x-auto sm:rounded-lg text-gray-700 bg-gray-50">{{ $item-> deskripsi }}</p> 
         
         
         <div class=" flex justify-end mr-3">

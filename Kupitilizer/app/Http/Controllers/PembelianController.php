@@ -19,7 +19,9 @@ class PembelianController extends Controller
 
     public function beli(Request $request){
         $date = Carbon::now();
-        // dd($request);
+        //dd($request);
+        
+        // dd($kupon);
         $keranjang = DB::table('keranjangs')->join('products', 'keranjangs.product_id', '=', 'products.id')->where('user_id', Auth::user()->id)->get();
         $totalBelanja = 0;
         foreach($keranjang as $item){
@@ -33,6 +35,8 @@ class PembelianController extends Controller
         ]);
 
         Keranjang::where('user_id', Auth::user()->id)->delete();
+
+        $kupon = DB::table('my_coupons')->where([['coupon_id', $request->kode_kupon],['user_id', Auth::user()->id]])->delete();
 
         return redirect()->back()->with('success', 'Barang berhasil di pesan');
     }
